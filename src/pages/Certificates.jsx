@@ -18,17 +18,17 @@ const Certificates = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-charcoal text-white py-16 md:py-24">
-        <div className="container mx-auto px-6">
+      <section className="bg-charcoal text-white py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-serif text-gold mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gold mb-4">
               Certifications
             </h1>
-            <p className="text-white/70 text-lg max-w-2xl">
+            <p className="text-white/70 text-base md:text-lg max-w-2xl">
               Professional qualifications and certifications in skincare,
               aesthetics, and massage therapy
             </p>
@@ -37,9 +37,9 @@ const Certificates = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-20 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="py-16 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {certificates.map((cert, index) => (
               <motion.div
                 key={cert.id}

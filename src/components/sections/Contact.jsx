@@ -8,16 +8,16 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-r from-butter to-charcoal/5"
+      className="py-16 md:py-20 lg:py-24 bg-gradient-to-r from-butter to-charcoal/5"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <SectionTitle
           title="Visit The Studio"
           subtitle="Get In Touch"
           centered={false}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="bg-butter p-8 rounded-2xl border-2 border-gold/30 shadow-md">

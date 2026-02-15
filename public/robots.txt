@@ -1,0 +1,6 @@
+# robots.txt for Silvia Skin Studio
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://silviaskinstudio.co.uk/sitemap.xml

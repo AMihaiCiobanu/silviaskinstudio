@@ -25,11 +25,14 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-20 bg-butter border-t border-gold/20">
-      <div className="container mx-auto px-6">
+    <section
+      id="reviews"
+      className="py-16 md:py-20 lg:py-24 bg-butter border-t border-gold/20"
+    >
+      <div className="container mx-auto px-4 md:px-6">
         <SectionTitle title="Client Love" subtitle="Testimonials" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {reviews.map((review, index) => (
             <motion.div
               key={index}

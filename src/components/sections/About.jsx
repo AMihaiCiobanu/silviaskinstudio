@@ -10,13 +10,13 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-20 md:py-32 bg-butter relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-butter relative overflow-hidden"
     >
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image Side */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -99,7 +99,7 @@ const About = () => {
               </h4>
 
               {/* Certificate Images Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
                 {[1, 2, 3, 4].map((i) => (
                   <motion.div
                     key={i}
@@ -107,7 +107,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="group overflow-hidden rounded-lg shadow-md h-[200px] cursor-pointer"
+                    className="group overflow-hidden rounded-lg shadow-md h-[180px] md:h-[200px] cursor-pointer"
                   >
                     <img
                       src={`/certificates/cert${String(i).padStart(5, "0")}.jpeg`}
@@ -119,10 +119,10 @@ const About = () => {
               </div>
 
               {/* CTA and PDF Button */}
-              <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4">
                 <Link
                   to="/certificates"
-                  className="bg-charcoal hover:bg-charcoal/90 text-white px-6 py-3 rounded-lg font-medium transition-all"
+                  className="w-full sm:w-auto bg-charcoal hover:bg-charcoal/90 text-white px-6 py-3 rounded-lg font-medium transition-all text-center"
                 >
                   See All Certificates
                 </Link>

@@ -21,11 +21,11 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="py-20 bg-charcoal relative overflow-hidden"
+      className="py-16 md:py-20 lg:py-24 bg-charcoal relative overflow-hidden"
     >
       {/* Decorative background */}
       <div className="absolute top-0 left-0 w-1/2 h-full bg-gold/5 rounded-r-full pointer-events-none" />
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <SectionTitle
           title="Curated Treatments"
           subtitle="Our Menu"
@@ -34,12 +34,12 @@ const Services = () => {
         />
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-12">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
                   ? "bg-gold text-charcoal shadow-lg scale-105 font-semibold"
                   : "bg-butter/80 text-charcoal hover:bg-gold/20 hover:text-charcoal"
@@ -59,7 +59,7 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
             >
               {servicesData[activeCategory]?.map((service, index) => (
                 <ServiceCard
