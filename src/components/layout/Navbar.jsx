@@ -30,23 +30,23 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? "bg-white/90 backdrop-blur-md shadow-sm py-4"
-          : "bg-transparent py-6"
+          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex flex-col z-50">
+        <a href="/" className="flex flex-col z-50 flex-shrink-0">
           <span
-            className={`font-serif text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300 ${
+            className={`font-serif text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300 ${
               isScrolled || isMobileMenuOpen ? "text-gold" : "text-white"
             }`}
           >
             SILVIA
           </span>
           <span
-            className={`text-[0.6rem] md:text-xs tracking-[0.2em] font-sans uppercase transition-colors duration-300 ${
-              isScrolled || isMobileMenuOpen ? "text-charcoal" : "text-white/80"
+            className={`text-xs tracking-[0.15em] font-sans uppercase transition-colors duration-300 ${
+              isScrolled || isMobileMenuOpen ? "text-charcoal" : "text-white/70"
             }`}
           >
             Skin Studio
@@ -54,7 +54,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -80,63 +80,89 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden z-50 focus:outline-none"
+          className="md:hidden z-50 p-1"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? (
-            <X className="w-8 h-8 text-charcoal" />
-          ) : (
-            <Menu
-              className={`w-8 h-8 ${isScrolled ? "text-charcoal" : "text-white"}`}
-            />
-          )}
+          <Menu
+            className={`w-6 h-6 ${isScrolled ? "text-charcoal" : "text-white"}`}
+          />
         </button>
+      </div>
 
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 md:hidden"
-            >
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-30 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "tween", duration: 0.25 }}
+            className="fixed top-16 right-0 w-72 max-h-[calc(100vh-64px)] bg-white z-40 flex flex-col shadow-xl md:hidden overflow-y-auto rounded-l-2xl"
+          >
+            {/* Mobile Menu Header */}
+            <div className="bg-gradient-to-r from-butter to-charcoal/5 p-6 flex items-center justify-between border-b border-gold/20">
+              <div>
+                <div className="font-serif text-lg font-bold text-gold">
+                  SILVIA
+                </div>
+                <div className="text-xs text-charcoal/70 tracking-wider">
+                  Skin Studio
+                </div>
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-1"
+              >
+                <X className="w-5 h-5 text-charcoal" />
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-serif text-charcoal hover:text-gold transition-colors"
+                  className="block py-3 px-4 rounded-lg text-charcoal font-serif text-base hover:bg-butter hover:text-gold transition-all"
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="pt-8 flex flex-col space-y-4 w-64">
-                <Button className="w-full justify-center">
-                  Book Appointment
-                </Button>
-                <div className="flex justify-center space-x-6 pt-4">
-                  <a
-                    href="tel:+447427619245"
-                    className="text-charcoal hover:text-gold"
-                  >
-                    <Phone className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://instagram.com/silviaskinstudio"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-charcoal hover:text-gold"
-                  >
-                    <Instagram className="w-6 h-6" />
-                  </a>
-                </div>
+            </div>
+
+            {/* Mobile Menu Footer */}
+            <div className="border-t border-gold/20 p-6 space-y-4">
+              <Button className="w-full">Book Appointment</Button>
+              <div className="flex justify-center gap-4 pt-2">
+                <a
+                  href="tel:+447427619245"
+                  className="p-2.5 rounded-full bg-butter text-charcoal hover:bg-gold hover:text-white transition-all"
+                >
+                  <Phone size={18} />
+                </a>
+                <a
+                  href="https://instagram.com/silviaskinstudio"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-2.5 rounded-full bg-butter text-charcoal hover:bg-gold hover:text-white transition-all"
+                >
+                  <Instagram size={18} />
+                </a>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
