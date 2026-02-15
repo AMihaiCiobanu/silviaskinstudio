@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import SectionTitle from '../ui/SectionTitle';
-import ServiceCard from '../ui/ServiceCard';
-import { servicesData } from '../../data/services';
+/** @format */
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import SectionTitle from "../ui/SectionTitle";
+import ServiceCard from "../ui/ServiceCard";
+import { servicesData } from "../../data/services";
 
 const categories = [
-  { id: 'facials', label: 'Facials' },
-  { id: 'skinBoosters', label: 'Skin Boosters' },
-  { id: 'massage', label: 'Massage' },
-  { id: 'browsLashes', label: 'Brows & Lashes' },
-  { id: 'nails', label: 'Nails' },
-  { id: 'packages', label: 'Packages' },
+  { id: "facials", label: "Facials" },
+  { id: "skinBoosters", label: "Skin Boosters" },
+  { id: "massage", label: "Massage" },
+  { id: "browsLashes", label: "Brows & Lashes" },
+  { id: "nails", label: "Nails" },
+  { id: "packages", label: "Packages" },
 ];
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
 
   return (
-    <section id="services" className="py-20 bg-charcoal relative overflow-hidden">
+    <section
+      id="services"
+      className="py-20 bg-charcoal relative overflow-hidden"
+    >
       {/* Decorative background */}
       <div className="absolute top-0 left-0 w-1/2 h-full bg-gold/5 rounded-r-full pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10">
-        <SectionTitle 
-          title="Curated Treatments" 
+        <SectionTitle
+          title="Curated Treatments"
           subtitle="Our Menu"
           centered={true}
           isDark={true}
@@ -35,9 +40,9 @@ const Services = () => {
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category.id 
-                  ? 'bg-gold text-charcoal shadow-lg scale-105 font-semibold' 
-                  : 'bg-butter/80 text-charcoal hover:bg-gold/20 hover:text-charcoal'
+                activeCategory === category.id
+                  ? "bg-gold text-charcoal shadow-lg scale-105 font-semibold"
+                  : "bg-butter/80 text-charcoal hover:bg-gold/20 hover:text-charcoal"
               }`}
             >
               {category.label}
@@ -57,10 +62,10 @@ const Services = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {servicesData[activeCategory]?.map((service, index) => (
-                <ServiceCard 
+                <ServiceCard
                   key={index}
                   {...service}
-                  onBook={() => window.location.href = 'tel:+447427619245'}
+                  onBook={() => (window.location.href = "tel:+447427619245")}
                 />
               ))}
             </motion.div>

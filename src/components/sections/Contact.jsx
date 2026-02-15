@@ -6,9 +6,16 @@ import SectionTitle from "../ui/SectionTitle";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-r from-butter to-charcoal/5">
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-r from-butter to-charcoal/5"
+    >
       <div className="container mx-auto px-6">
-        <SectionTitle title="Visit The Studio" subtitle="Get In Touch" centered={false} />
+        <SectionTitle
+          title="Visit The Studio"
+          subtitle="Get In Touch"
+          centered={false}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}

@@ -1,11 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+/** @format */
+
+import React from "react";
+import { motion } from "framer-motion";
 
 const SectionTitle = ({ title, subtitle, centered = true, isDark = false }) => {
   return (
-    <div className={`mb-12 ${centered ? 'text-center' : 'text-left'}`}>
+    <div className={`mb-12 ${centered ? "text-center" : "text-left"}`}>
       {subtitle && (
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -15,16 +17,18 @@ const SectionTitle = ({ title, subtitle, centered = true, isDark = false }) => {
           {subtitle}
         </motion.span>
       )}
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className={`text-3xl md:text-4xl font-serif ${isDark ? 'text-white' : 'text-charcoal'}`}
+        className={`text-3xl md:text-4xl font-serif ${isDark ? "text-white" : "text-charcoal"}`}
       >
         {title}
       </motion.h2>
-      <div className={`mt-4 h-1 w-24 bg-gold/30 rounded-full ${centered ? 'mx-auto' : ''}`} />
+      <div
+        className={`mt-4 h-1 w-24 bg-gold/30 rounded-full ${centered ? "mx-auto" : ""}`}
+      />
     </div>
   );
 };
