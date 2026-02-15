@@ -8,7 +8,7 @@ const ServiceCard = ({ title, description, benefits, price, duration, onBook }) 
     <motion.div 
       whileHover={{ y: -5 }}
       transition={{ type: 'spring', stiffness: 300 }}
-      className="bg-white p-6 rounded-2xl shadow-sm border border-gold/10 hover:shadow-xl hover:border-gold/30 transition-all duration-300 flex flex-col h-full"
+      className="bg-butter p-6 rounded-2xl shadow-md border border-gold/20 hover:shadow-xl hover:border-gold/50 transition-all duration-300 flex flex-col h-full group"
     >
       <div className="mb-4">
         <h3 className="text-xl font-serif text-charcoal mb-2">{title}</h3>

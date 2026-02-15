@@ -23,7 +23,7 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-20 bg-butter-light border-t border-gold/10">
+    <section id="reviews" className="py-20 bg-butter border-t border-gold/20">
       <div className="container mx-auto px-6">
         <SectionTitle 
           title="Client Love" 
@@ -38,7 +38,7 @@ const Reviews = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-gold/5 flex flex-col items-center text-center relative"
+              className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-gold/20 hover:shadow-xl hover:bg-white hover:border-gold/50 transition-all duration-300 flex flex-col items-center text-center relative"
             >
               {/* Quote Icon */}
               <div className="absolute top-4 left-6 text-6xl text-gold/10 font-serif leading-none">“</div>

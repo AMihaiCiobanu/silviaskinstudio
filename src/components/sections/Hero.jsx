@@ -4,16 +4,10 @@ import Button from '../ui/Button';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background Image Placeholder - Replace with actual image later */}
-      <div className="absolute inset-0 bg-charcoal/20 z-10" />
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")',
-          backgroundAttachment: 'fixed'
-        }}
-      />
+    <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-charcoal via-charcoal/95 to-gold/20">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gold/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/3 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
       
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">

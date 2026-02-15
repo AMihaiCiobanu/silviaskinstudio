@@ -17,11 +17,15 @@ const Services = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-20 bg-charcoal relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute top-0 left-0 w-1/2 h-full bg-gold/5 rounded-r-full pointer-events-none" />
+      <div className="container mx-auto px-6 relative z-10">
         <SectionTitle 
           title="Curated Treatments" 
           subtitle="Our Menu"
+          centered={true}
+          isDark={true}
         />
 
         {/* Category Tabs */}
@@ -32,8 +36,8 @@ const Services = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id 
-                  ? 'bg-gold text-white shadow-lg scale-105' 
-                  : 'bg-butter text-charcoal/70 hover:bg-gold/10 hover:text-gold'
+                  ? 'bg-gold text-charcoal shadow-lg scale-105 font-semibold' 
+                  : 'bg-butter/80 text-charcoal hover:bg-gold/20 hover:text-charcoal'
               }`}
             >
               {category.label}

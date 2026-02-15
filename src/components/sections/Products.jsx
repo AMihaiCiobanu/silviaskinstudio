@@ -21,7 +21,7 @@ const products = [
 
 const Products = () => {
   return (
-    <section id="products" className="py-20 bg-butter/50 border-t border-gold/10">
+    <section id="products" className="py-20 bg-butter border-t border-gold/20">
       <div className="container mx-auto px-6">
         <SectionTitle 
           title="Retail Collection" 
@@ -30,8 +30,8 @@ const Products = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {products.map((product, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg text-center group hover:shadow-xl transition-shadow duration-300">
-              <div className="aspect-[4/5] bg-gray-100 rounded mb-6 overflow-hidden relative">
+            <div key={index} className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl text-center group hover:shadow-xl hover:bg-white transition-all duration-300 border border-gold/20">
+              <div className="aspect-[4/5] bg-gray-100 rounded-lg mb-6 overflow-hidden relative">
                  <img 
                    src={product.image} 
                    alt={product.name}

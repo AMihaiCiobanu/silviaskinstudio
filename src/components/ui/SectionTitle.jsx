@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SectionTitle = ({ title, subtitle, centered = true }) => {
+const SectionTitle = ({ title, subtitle, centered = true, isDark = false }) => {
   return (
     <div className={`mb-12 ${centered ? 'text-center' : 'text-left'}`}>
       {subtitle && (
@@ -10,7 +10,7 @@ const SectionTitle = ({ title, subtitle, centered = true }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="block text-gold text-sm font-medium tracking-widest uppercase mb-2 font-sans"
+          className={`block text-gold text-sm font-medium tracking-widest uppercase mb-2 font-sans`}
         >
           {subtitle}
         </motion.span>
@@ -20,7 +20,7 @@ const SectionTitle = ({ title, subtitle, centered = true }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl md:text-4xl font-serif text-charcoal"
+        className={`text-3xl md:text-4xl font-serif ${isDark ? 'text-white' : 'text-charcoal'}`}
       >
         {title}
       </motion.h2>
