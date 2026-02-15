@@ -1,12 +1,13 @@
 /** @format */
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FileText, Download } from "lucide-react";
+import { FileText, Download, X } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
 
 const About = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
   return (
     <section
       id="about"
@@ -107,13 +108,21 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="group overflow-hidden rounded-lg shadow-md h-[180px] md:h-[200px] cursor-pointer"
+                    onClick={() =>
+                      setSelectedImage({
+                        id: i,
+                        src: `/certificates/cert${String(i).padStart(5, "0")}.jpeg`,
+                        alt: `Certificate ${i}`,
+                      })
+                    }
+                    className="group relative overflow-hidden rounded-lg shadow-md h-[180px] md:h-[200px] cursor-pointer"
                   >
                     <img
                       src={`/certificates/cert${String(i).padStart(5, "0")}.jpeg`}
                       alt={`Certificate ${i}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
                   </motion.div>
                 ))}
               </div>
@@ -131,6 +140,39 @@ const About = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-12 right-0 text-white hover:text-gold transition-colors z-10"
+              >
+                <X size={32} />
+              </button>
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

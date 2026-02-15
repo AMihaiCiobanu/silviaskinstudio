@@ -80,18 +80,18 @@ const Certificates = () => {
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full"
+            className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gold transition-colors"
+              className="absolute -top-12 right-0 text-white hover:text-gold transition-colors z-10"
             >
               <X size={32} />
             </button>
             <img
               src={selectedImage.src}
               alt={selectedImage.alt}
-              className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+              className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
             />
           </motion.div>
         </motion.div>
