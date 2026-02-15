@@ -1,6 +1,9 @@
+<!-- @format -->
+
 # Cloudflare Pages Deployment Guide
 
 ## Prerequisites
+
 - GitHub repository: https://github.com/AMihaiCiobanu/silviaskinstudio
 - Cloudflare account
 - Domain: silviaskinstudio.co.uk (registered via 123-reg)
@@ -28,6 +31,7 @@ Root directory: /
 ```
 
 ### Environment Variables (Optional)
+
 None required for basic deployment.
 
 ## Step 3: Deploy
@@ -39,6 +43,7 @@ None required for basic deployment.
 ## Step 4: Add Custom Domain
 
 ### Option A: Domain already in Cloudflare
+
 1. In your Pages project → **Custom domains** tab
 2. Click **Set up a custom domain**
 3. Enter `silviaskinstudio.co.uk`
@@ -47,6 +52,7 @@ None required for basic deployment.
 6. DNS records will be added automatically
 
 ### Option B: Domain at 123-reg (Transfer DNS to Cloudflare)
+
 1. In Cloudflare Dashboard → **Websites** → **Add a site**
 2. Enter `silviaskinstudio.co.uk` → Click **Add site**
 3. Select **Free** plan
@@ -75,10 +81,12 @@ None required for basic deployment.
 ## Step 6: Optimize Performance
 
 ### Caching
+
 1. Go to **Caching** → **Configuration**
 2. Set **Browser Cache TTL**: 4 hours (or higher)
 
 ### Speed
+
 1. Go to **Speed** → **Optimization**
 2. Enable:
    - ✅ Auto Minify (JavaScript, CSS, HTML)
@@ -87,6 +95,7 @@ None required for basic deployment.
 ## Step 7: Set Up Analytics (Optional)
 
 ### Web Analytics (Privacy-friendly, no cookies)
+
 1. Go to **Analytics** → **Web Analytics**
 2. Click **Add a site**
 3. Add `silviaskinstudio.co.uk`
@@ -96,10 +105,12 @@ None required for basic deployment.
 ## Step 8: Verify Deployment
 
 Visit your site:
+
 - https://silviaskinstudio.co.uk
 - https://www.silviaskinstudio.co.uk
 
 Check:
+
 - ✅ All pages load correctly
 - ✅ SSL certificate is active (padlock icon)
 - ✅ Routing works (navigate between pages)
@@ -118,6 +129,7 @@ git push
 ```
 
 Cloudflare will:
+
 1. Pull latest code from GitHub
 2. Run `npm install`
 3. Run `npm run build`
@@ -127,34 +139,41 @@ Cloudflare will:
 ## Monitoring
 
 ### Build Status
+
 - Cloudflare Dashboard → Your project → **Deployments** tab
 - See build logs, deployment history, and status
 
 ### Analytics
+
 - **Traffic**: Cloudflare Dashboard → **Analytics**
 - **Performance**: Lighthouse score, Web Vitals
 
 ## Troubleshooting
 
 ### Build fails
+
 - Check **Deployments** → Click failed build → View logs
 - Common issues:
   - Missing dependencies: Run `npm install` locally
   - Build errors: Run `npm run build` locally to test
 
 ### Domain not resolving
+
 - DNS propagation takes 24-48 hours
 - Check status: https://www.whatsmydns.net
 
 ### 404 Errors on routes
+
 - Ensure `_redirects` file exists in `/public`
 - Content: `/* /index.html 200`
 
 ### Old version showing
+
 - Clear cache: Cloudflare Dashboard → **Caching** → **Purge Cache**
 - Hard refresh browser: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
 
 ## Support
+
 - Cloudflare Docs: https://developers.cloudflare.com/pages
 - Community: https://community.cloudflare.com
 
