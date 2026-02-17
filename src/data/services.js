@@ -308,15 +308,150 @@ export const servicesData = {
         }
     ],
     nails: [
-        { title: "File And Paint", price: "£25" },
-        { title: "Manicure", price: "£30" },
-        { title: "Deluxe Manicure (with mask)", price: "£40" },
-        { title: "Pedicure", price: "£30" },
-        { title: "Deluxe Pedicure (with mask)", price: "£40" },
-        { title: "Gel Manicure", price: "£35" },
-        { title: "Gel Pedicure", price: "£35" },
-        { title: "Soak Off Gel", price: "£15" },
-        { title: "Soak Off & Reapplication", price: "£30" }
+        {
+            title: "File And Paint",
+            description: "Quick tidy and polish refresh to keep nails neat and glossy.",
+            benefits: ["Shape and smooth", "Fresh polish", "Clean finish"],
+            fullDescription: "A quick tidy-up for nails that need a clean, polished finish. Includes gentle filing and shaping, light cuticle care, and a fresh coat of polish to leave nails neat and glossy.",
+            detailedBenefits: [
+                "Neat nail shape and smooth edges",
+                "Fresh, glossy polish application",
+                "Quick refresh for hands on the go",
+                "Clean and tidy overall finish"
+            ],
+            recommendedFor: "Anyone who wants a quick nail refresh with a tidy, polished look.",
+            treatmentFrequency: "As needed or every 2–3 weeks to keep nails looking neat.",
+            price: "£25",
+            duration: "25 mins"
+        },
+        {
+            title: "Manicure",
+            description: "Classic nail care with shaping, cuticle work, and polish.",
+            benefits: ["Neat cuticles", "Even shape", "Polished look"],
+            fullDescription: "A classic manicure to maintain healthy, well-groomed nails. Includes nail shaping, cuticle care, light buffing, and a polished finish for a clean, elegant look.",
+            detailedBenefits: [
+                "Improves nail shape and appearance",
+                "Tidies and conditions cuticles",
+                "Smooth, polished finish",
+                "Keeps hands looking well-groomed"
+            ],
+            recommendedFor: "Anyone wanting regular nail maintenance and a polished, natural look.",
+            treatmentFrequency: "Every 2–3 weeks for consistently neat nails.",
+            price: "£30",
+            duration: "45 mins"
+        },
+        {
+            title: "Deluxe Manicure (with mask)",
+            description: "Hydrating manicure with mask for soft, smooth hands.",
+            benefits: ["Deep hydration", "Soft skin", "Longer lasting finish"],
+            fullDescription: "A luxurious manicure with added hydration. Includes all the essentials plus a nourishing mask to soften and condition the hands for a silky, pampered finish.",
+            detailedBenefits: [
+                "Deeply hydrates and softens skin",
+                "Smooths and conditions hands",
+                "Neat, polished nails",
+                "Longer-lasting, well-groomed feel"
+            ],
+            recommendedFor: "Dry hands or anyone wanting extra nourishment with their manicure.",
+            treatmentFrequency: "Every 3–4 weeks or as needed for hydration.",
+            price: "£40",
+            duration: "55 mins"
+        },
+        {
+            title: "Pedicure",
+            description: "Foot and nail care with shaping, cuticles, and polish.",
+            benefits: ["Smooth feet", "Neat nails", "Fresh polish"],
+            fullDescription: "A classic pedicure to refresh and tidy feet. Includes nail shaping, cuticle care, light buffing, and polish to leave feet looking clean and well-groomed.",
+            detailedBenefits: [
+                "Improves nail shape and appearance",
+                "Tidies cuticles and nail edges",
+                "Fresh, clean polish finish",
+                "Leaves feet looking neat and cared for"
+            ],
+            recommendedFor: "Regular foot care and anyone wanting a clean, polished finish.",
+            treatmentFrequency: "Every 3–4 weeks to maintain smooth, tidy feet.",
+            price: "£30",
+            duration: "45 mins"
+        },
+        {
+            title: "Deluxe Pedicure (with mask)",
+            description: "Spa-style pedicure with nourishing mask for extra softness.",
+            benefits: ["Intense moisture", "Silky feet", "Polished finish"],
+            fullDescription: "A spa-style pedicure with added hydration. Includes all standard pedicure steps plus a rich nourishing mask to soften and restore dry feet.",
+            detailedBenefits: [
+                "Deeply moisturizes and softens skin",
+                "Smooths rough, dry areas",
+                "Neat, polished nails",
+                "Spa-level comfort and care"
+            ],
+            recommendedFor: "Dry or tired feet, or anyone wanting extra pampering.",
+            treatmentFrequency: "Every 4–6 weeks or as needed for softness.",
+            price: "£40",
+            duration: "55 mins"
+        },
+        {
+            title: "Gel Manicure",
+            description: "Long-lasting gel color with a glossy, chip-resistant finish.",
+            benefits: ["High shine", "Chip resistant", "Lasting wear"],
+            fullDescription: "A gel manicure for long-lasting, glossy color. Includes nail shaping, cuticle care, and gel polish cured for a durable, chip-resistant finish.",
+            detailedBenefits: [
+                "Glossy, salon-fresh finish",
+                "Chip-resistant wear for weeks",
+                "Neat cuticles and clean edges",
+                "Durable, low-maintenance color"
+            ],
+            recommendedFor: "Anyone wanting longer-lasting polish with high shine.",
+            treatmentFrequency: "Every 2–3 weeks for best appearance and maintenance.",
+            price: "£35",
+            duration: "55 mins"
+        },
+        {
+            title: "Gel Pedicure",
+            description: "Gel polish for toes with durable shine and clean finish.",
+            benefits: ["High shine", "Durable finish", "Long wear"],
+            fullDescription: "A gel pedicure for long-lasting, glossy toes. Includes nail shaping, cuticle care, and gel polish for a durable, chip-resistant finish.",
+            detailedBenefits: [
+                "Long-lasting, glossy finish",
+                "Chip-resistant wear",
+                "Neat cuticles and tidy nails",
+                "Perfect for holidays and busy schedules"
+            ],
+            recommendedFor: "Anyone wanting durable, high-shine color on toes.",
+            treatmentFrequency: "Every 3–4 weeks for best upkeep.",
+            price: "£35",
+            duration: "55 mins"
+        },
+        {
+            title: "Soak Off Gel",
+            description: "Safe gel removal to protect and maintain nail health.",
+            benefits: ["Gentle removal", "Protects nails", "Clean base"],
+            fullDescription: "Gentle gel removal to protect the natural nail. The gel is soaked off safely to leave nails clean and ready for a fresh treatment or polish.",
+            detailedBenefits: [
+                "Safe removal without damage",
+                "Protects natural nail health",
+                "Clean, smooth nail surface",
+                "Preps nails for next treatment"
+            ],
+            recommendedFor: "Anyone removing gel polish safely between treatments.",
+            treatmentFrequency: "As needed when gel polish is ready to be removed.",
+            price: "£15",
+            duration: "20 mins"
+        },
+        {
+            title: "Soak Off & Reapplication",
+            description: "Remove old gel and refresh with a new, flawless set.",
+            benefits: ["Clean removal", "Fresh new color", "Smooth finish"],
+            fullDescription: "A complete refresh that includes safe gel removal and a new gel application. Nails are prepped and polished for a flawless, long-lasting finish.",
+            detailedBenefits: [
+                "Safe removal of previous gel",
+                "Fresh, glossy new color",
+                "Smooth, even finish",
+                "Long-lasting, chip-resistant wear"
+            ],
+            recommendedFor: "Anyone who wants a full gel refresh in one appointment.",
+            treatmentFrequency: "Every 2–3 weeks to maintain gel color.",
+            price: "£30",
+            duration: "60 mins"
+        }
     ],
     packages: [
         {

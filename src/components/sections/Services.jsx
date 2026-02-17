@@ -39,10 +39,10 @@ const Services = () => {
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 cursor-pointer ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 cursor-pointer border border-transparent ${
                 activeCategory === category.id
                   ? "bg-gold text-charcoal shadow-lg scale-105 font-semibold"
-                  : "bg-butter/80 text-charcoal hover:bg-gold/20 hover:text-charcoal"
+                  : "bg-butter/80 text-charcoal hover:bg-butter hover:border-gold/40 hover:shadow-md hover:-translate-y-0.5"
               }`}
             >
               {category.label}
