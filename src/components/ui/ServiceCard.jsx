@@ -37,7 +37,7 @@ const ServiceCard = ({
             {hasExtendedInfo && (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="p-1.5 rounded-full bg-gold/10 hover:bg-gold/20 transition-colors flex-shrink-0"
+                className="p-1.5 rounded-full bg-gold/10 hover:bg-gold/20 transition-colors flex-shrink-0 cursor-pointer"
                 aria-label="View details"
                 title="View full details"
               >
@@ -74,9 +74,9 @@ const ServiceCard = ({
           {hasExtendedInfo && (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full text-sm text-gold hover:text-gold/80 font-medium flex items-center justify-start gap-2 transition-colors group/link"
+              className="w-full text-sm text-gold hover:text-gold/80 font-medium flex items-center justify-start gap-2 transition-colors group/link cursor-pointer"
             >
-              <span>Show More Details</span>
+              <span>Read More</span>
               <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
             </button>
           )}

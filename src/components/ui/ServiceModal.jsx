@@ -42,7 +42,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 cursor-pointer"
           />
 
           {/* Modal */}
@@ -58,7 +58,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 rounded-full bg-charcoal/10 hover:bg-charcoal/20 transition-colors z-10"
+                className="absolute top-4 right-4 p-2 rounded-full bg-charcoal/10 hover:bg-charcoal/20 transition-colors z-10 cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5 text-charcoal" />

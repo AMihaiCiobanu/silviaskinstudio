@@ -143,6 +143,7 @@ export const servicesData = {
         {
             title: "Profhilo",
             description: "Deeply hydrating injectable treatment to improve skin quality from within. Enhances hydration, elasticity, and texture without adding volume.",
+            benefits: ["Deep hydration", "Improves elasticity", "No added volume", "Natural results"],
             fullDescription: "Profhilo is a revolutionary deeply hydrating injectable treatment that works to improve skin quality from within. Unlike traditional dermal fillers, Profhilo spreads evenly under the skin to improve hydration, elasticity, and texture without adding volume. It's one of the highest concentrations of hyaluronic acid on the market.",
             detailedBenefits: [
                 "Deeply hydrates the skin from within",
@@ -160,6 +161,7 @@ export const servicesData = {
         {
             title: "Sunekos",
             description: "Injectable treatment to restore skin elasticity and natural volume.",
+            benefits: ["Restores elasticity", "Natural volume", "Reduces fine lines", "Stimulates collagen"],
             fullDescription: "Sunekos is an innovative injectable treatment designed to restore skin elasticity and volume using a patented formula of hyaluronic acid and amino acids. This treatment works to regenerate the extracellular matrix, improving skin quality naturally and effectively.",
             detailedBenefits: [
                 "Restores skin elasticity and firmness",
@@ -177,6 +179,7 @@ export const servicesData = {
         {
             title: "Polynucleotide",
             description: "Regenerative treatment to repair and rejuvenate skin at a cellular level.",
+            benefits: ["Cellular repair", "Tissue regeneration", "Anti-aging benefits", "Biocompatible"],
             fullDescription: "Polynucleotide is a cutting-edge regenerative injectable treatment that repairs and rejuvenates the skin at a cellular level. Using biocompatible DNA molecules, this treatment promotes tissue repair, improves skin quality, and provides powerful anti-aging benefits.",
             detailedBenefits: [
                 "Repairs skin at a cellular level",
@@ -196,6 +199,7 @@ export const servicesData = {
         {
             title: "Swedish Massage",
             description: "Classic full-body massage to promote relaxation and circulation using long, flowing strokes and kneading.",
+            benefits: ["Deep relaxation", "Improved circulation", "Reduces tension", "Overall wellbeing"],
             fullDescription: "A classic full-body massage technique designed to promote deep relaxation and improve circulation. Using long, flowing strokes, gentle kneading, and rhythmic tapping, this massage helps reduce muscle tension, ease stress, and create a sense of overall wellbeing.",
             detailedBenefits: [
                 "Promotes deep relaxation and stress relief",
@@ -213,6 +217,7 @@ export const servicesData = {
         {
             title: "Advanced Therapeutic Massage",
             description: "Deep tissue massage addressing chronic tension and pain using trigger point therapy and myofascial release.",
+            benefits: ["Relieves chronic pain", "Trigger point therapy", "Improves mobility", "Lasting relief"],
             fullDescription: "An intensive deep tissue massage specifically designed to address chronic muscle tension, pain, and injury. Using advanced techniques including trigger point therapy, myofascial release, and deep pressure, this treatment targets problem areas to provide lasting relief and improved mobility.",
             detailedBenefits: [
                 "Addresses chronic pain and muscle tension",
@@ -230,6 +235,7 @@ export const servicesData = {
         {
             title: "Lava Shell Massage",
             description: "Indulgent massage using warm lava shells to soothe muscle tension and promote deep relaxation.",
+            benefits: ["Deep heat therapy", "Melts tension", "Profound relaxation", "Unique sensory experience"],
             fullDescription: "An indulgent and luxurious massage treatment using heated Tiger Clam shells as massage tools. The natural heat from the shells penetrates deep into the muscles, melting away tension while promoting profound relaxation and sensory experience unlike any other massage.",
             detailedBenefits: [
                 "Deep, penetrating heat soothes muscles",
@@ -247,6 +253,7 @@ export const servicesData = {
         {
             title: "Express Massage",
             description: "Focused massage for busy schedules, targeting key areas like neck, shoulders, and back.",
+            benefits: ["Quick relief", "Targets key areas", "Perfect for busy schedules", "Immediate stress relief"],
             fullDescription: "A quick and effective massage treatment designed for busy individuals who need targeted relief. Focusing on key tension areas such as neck, shoulders, and upper back, this express session provides maximum benefit in minimal time - perfect for lunch breaks or quick relief.",
             detailedBenefits: [
                 "Quick relief for busy schedules",
@@ -266,6 +273,7 @@ export const servicesData = {
         {
             title: "Lash Lift",
             description: "Semi-permanent treatment that lifts and curls natural lashes for a longer, fuller look.",
+            benefits: ["Longer, fuller lashes", "No daily mascara needed", "Lasts 6-8 weeks", "Enhances natural beauty"],
             fullDescription: "A semi-permanent treatment that lifts, curls, and enhances your natural lashes from the root, creating the illusion of longer, fuller lashes without the need for extensions or daily mascara. Results last 6-8 weeks as lashes naturally maintain their lifted curve.",
             detailedBenefits: [
                 "Lifts and curls natural lashes from the root",
@@ -283,6 +291,7 @@ export const servicesData = {
         {
             title: "Brow Lamination",
             description: "Treatment to smooth, lift, and set eyebrow hairs for a fuller, perfectly shaped look.",
+            benefits: ["Fuller, defined brows", "Tames unruly hairs", "Lasts 6-8 weeks", "Low maintenance"],
             fullDescription: "A revolutionary treatment that smooths, lifts, and sets eyebrow hairs in place to create fuller, more defined, and perfectly shaped brows. This semi-permanent solution tames unruly hairs and fills in sparse areas, giving you flawless brows that last for weeks.",
             detailedBenefits: [
                 "Smooths and lifts brow hairs for a fuller look",
@@ -313,6 +322,7 @@ export const servicesData = {
         {
             title: "Microneedling Essential",
             description: "3 Microneedling treatments + Serums + Mask.",
+            benefits: ["3 professional sessions", "Serums & masks included", "Stimulates collagen", "Cost-effective package"],
             fullDescription: "A comprehensive package designed to deliver visible skin transformation through professional microneedling treatments. Includes 3 microneedling sessions with specialized serums and masks to maximize collagen production and skin rejuvenation.",
             detailedBenefits: [
                 "3 professional microneedling sessions",
@@ -329,6 +339,7 @@ export const servicesData = {
         {
             title: "Advanced Skin Boost",
             description: "3 Microneedling treatments + 1 Profhilo skin booster.",
+            benefits: ["3 Microneedling + 1 Profhilo", "Collagen stimulation", "Deep hydration", "Advanced anti-aging"],
             fullDescription: "A powerful combination treatment package that pairs the regenerative benefits of microneedling with the deep hydration of Profhilo. This advanced package delivers exceptional results for skin rejuvenation, firmness, and overall skin quality.",
             detailedBenefits: [
                 "3 professional microneedling sessions",
@@ -345,6 +356,7 @@ export const servicesData = {
         {
             title: "Ultimate Skin Transformation",
             description: "6 Microneedling treatments + 2 Profhilo skin boosters.",
+            benefits: ["6 Microneedling + 2 Profhilo", "Maximum results", "Dramatic transformation", "Ultimate value"],
             fullDescription: "The most comprehensive skin transformation package available. Combining 6 microneedling sessions with 2 Profhilo treatments, this ultimate package delivers dramatic, long-lasting results for those committed to achieving their best skin ever.",
             detailedBenefits: [
                 "6 professional microneedling sessions",
@@ -361,6 +373,7 @@ export const servicesData = {
         {
             title: "Signature Relax & Glow",
             description: "Massage + Facial + Scalp Massage.",
+            benefits: ["Full body massage", "Professional facial", "Scalp massage", "Complete rejuvenation"],
             fullDescription: "A luxurious combination treatment that perfectly balances relaxation with skin rejuvenation. This signature package includes a relaxing massage, a professional facial, and a soothing scalp massage for the ultimate pampering experience.",
             detailedBenefits: [
                 "Full relaxation massage session",
@@ -378,6 +391,7 @@ export const servicesData = {
         {
             title: "Luxury Body and Skin",
             description: "55min Massage + 55min Advanced Facial + Mask.",
+            benefits: ["55min massage", "55min advanced facial", "Treatment mask", "Ultimate luxury"],
             fullDescription: "The ultimate luxury spa experience combining a full-length therapeutic massage with an advanced facial treatment and rejuvenating mask. This extended package provides complete body and facial rejuvenation for those who want the absolute best.",
             detailedBenefits: [
                 "Full 55-minute therapeutic massage",
