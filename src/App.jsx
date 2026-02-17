@@ -1,14 +1,22 @@
 /** @format */
 
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import Certificates from "./pages/Certificates";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
+import * as analytics from "./utils/analytics";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Track page view on route change
+    analytics.pageview(location.pathname + location.search);
+  }, [location]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

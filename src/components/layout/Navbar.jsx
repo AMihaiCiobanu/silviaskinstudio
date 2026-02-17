@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
+import * as analytics from "../../utils/analytics";
 
 const navLinks = [
   { name: "Home", href: "/#home" },
@@ -59,6 +60,13 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={() => {
+                analytics.event({
+                  action: "click",
+                  category: "Navigation",
+                  label: `Menu - ${link.name}`,
+                });
+              }}
               className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-gold ${
                 isScrolled ? "text-charcoal" : "text-white"
               }`}
@@ -69,6 +77,7 @@ const Navbar = () => {
           <Button
             variant={isScrolled ? "primary" : "outline"}
             onClick={() => (window.location.href = "tel:+447427619245")}
+            data-analytics="navbar-book-desktop"
             className={
               isScrolled
                 ? ""
@@ -133,7 +142,14 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    analytics.event({
+                      action: "click",
+                      category: "Navigation",
+                      label: `Menu - ${link.name} (Mobile)`,
+                    });
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="block py-3 px-4 rounded-lg text-charcoal font-serif text-base hover:bg-butter hover:text-gold transition-all"
                 >
                   {link.name}
@@ -145,6 +161,7 @@ const Navbar = () => {
             <div className="border-t border-gold/20 p-6 space-y-4">
               <Button
                 onClick={() => (window.location.href = "tel:+447427619245")}
+                data-analytics="navbar-book-mobile"
                 className="w-full"
               >
                 Book Appointment

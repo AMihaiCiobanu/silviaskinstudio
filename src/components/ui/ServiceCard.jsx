@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Info } from "lucide-react";
 import Button from "./Button";
 import ServiceModal from "./ServiceModal";
+import * as analytics from "../../utils/analytics";
 
 const ServiceCard = ({
   title,
@@ -36,7 +37,14 @@ const ServiceCard = ({
             <h3 className="text-xl font-serif text-charcoal">{title}</h3>
             {hasExtendedInfo && (
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  analytics.event({
+                    action: "click",
+                    category: "Service",
+                    label: `View More - ${title} (Info Icon)`,
+                  });
+                  setIsModalOpen(true);
+                }}
                 className="p-1.5 rounded-full bg-gold/10 hover:bg-gold/20 transition-colors flex-shrink-0 cursor-pointer"
                 aria-label="View details"
                 title="View full details"
@@ -73,7 +81,14 @@ const ServiceCard = ({
         <div className="mt-auto space-y-3">
           {hasExtendedInfo && (
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                analytics.event({
+                  action: "click",
+                  category: "Service",
+                  label: `View More - ${title} (Read More)`,
+                });
+                setIsModalOpen(true);
+              }}
               className="w-full text-sm text-gold hover:text-gold/80 font-medium flex items-center justify-start gap-2 transition-colors group/link cursor-pointer"
             >
               <span>Read More</span>
@@ -93,6 +108,7 @@ const ServiceCard = ({
                 variant="outline"
                 size="sm"
                 onClick={onBook}
+                data-analytics={`service-card-${title}`}
                 className="px-4 py-2 text-xs whitespace-nowrap"
               >
                 Book Now

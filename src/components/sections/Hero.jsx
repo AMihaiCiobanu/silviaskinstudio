@@ -38,6 +38,7 @@ const Hero = () => {
             <Button
               variant="primary"
               onClick={() => (window.location.href = "tel:+447427619245")}
+              data-analytics="hero-book"
               className="w-full sm:w-auto min-w-[200px] py-4 text-base"
             >
               Book Appointment
