@@ -65,6 +65,7 @@ const Services = () => {
                 <ServiceCard
                   key={index}
                   {...service}
+                  fullService={service}
                   onBook={() => (window.location.href = "tel:+447427619245")}
                 />
               ))}
