@@ -13,7 +13,12 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    // Track page view on route change
+    // Check if user has already consented and initialize GA
+    analytics.checkConsentAndInitialize();
+  }, []);
+
+  useEffect(() => {
+    // Track page view on route change (only if GA is initialized)
     analytics.pageview(location.pathname + location.search);
   }, [location]);
 
