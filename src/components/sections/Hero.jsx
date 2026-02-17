@@ -37,12 +37,18 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-4 px-4">
             <Button
               variant="primary"
+              onClick={() => (window.location.href = "tel:+447427619245")}
               className="w-full sm:w-auto min-w-[200px] py-4 text-base"
             >
               Book Appointment
             </Button>
             <Button
               variant="outline"
+              onClick={() => {
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="w-full sm:w-auto min-w-[200px] py-4 text-base text-white border-white hover:bg-white hover:text-charcoal hover:border-white"
             >
               View Treatments

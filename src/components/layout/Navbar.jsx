@@ -68,6 +68,7 @@ const Navbar = () => {
           ))}
           <Button
             variant={isScrolled ? "primary" : "outline"}
+            onClick={() => (window.location.href = "tel:+447427619245")}
             className={
               isScrolled
                 ? ""
@@ -142,7 +143,12 @@ const Navbar = () => {
 
             {/* Mobile Menu Footer */}
             <div className="border-t border-gold/20 p-6 space-y-4">
-              <Button className="w-full">Book Appointment</Button>
+              <Button
+                onClick={() => (window.location.href = "tel:+447427619245")}
+                className="w-full"
+              >
+                Book Appointment
+              </Button>
               <div className="flex justify-center gap-4 pt-2">
                 <a
                   href="tel:+447427619245"
