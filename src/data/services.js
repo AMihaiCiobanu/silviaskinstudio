@@ -40,7 +40,7 @@ export const servicesData = {
             description: "Minimally invasive treatment using fine needles to stimulate collagen. Improves skin texture, reduces fine lines, acne scars, and pigmentation.",
             benefits: ["Stimulates collagen", "Reduces acne scars", "Improves texture", "Evens skin tone"],
             price: "£98 / £125",
-            duration: "55 / 85 min"
+            duration: "55 / 85 mins"
         },
         {
             title: "Pro Power Peel",
