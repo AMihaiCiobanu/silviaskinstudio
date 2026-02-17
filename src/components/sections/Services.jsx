@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "../ui/SectionTitle";
 import ServiceCard from "../ui/ServiceCard";
 import { servicesData } from "../../data/services";
+import * as analytics from "../../utils/analytics";
 
 const categories = [
   { id: "facials", label: "Facials" },
@@ -38,7 +39,14 @@ const Services = () => {
           {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setActiveCategory(category.id)}
+              onClick={() => {
+                analytics.event({
+                  action: "click",
+                  category: "Service Category",
+                  label: category.label,
+                });
+                setActiveCategory(category.id);
+              }}
               className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 cursor-pointer border border-transparent ${
                 activeCategory === category.id
                   ? "bg-gold text-charcoal shadow-lg scale-105 font-semibold"

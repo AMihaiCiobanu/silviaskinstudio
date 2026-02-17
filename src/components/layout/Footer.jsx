@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Instagram, MapPin, Phone, Mail } from "lucide-react";
-import * as analytics from "../../utils/analytics";
 
 const Footer = () => {
   return (
@@ -58,13 +57,6 @@ const Footer = () => {
                   <li key={item}>
                     <a
                       href={`/#${item.toLowerCase()}`}
-                      onClick={() => {
-                        analytics.event({
-                          action: "click",
-                          category: "Navigation",
-                          label: `Footer - ${item}`,
-                        });
-                      }}
                       className="text-white/70 hover:text-gold transition-colors text-sm"
                     >
                       {item}
@@ -75,13 +67,6 @@ const Footer = () => {
               <li>
                 <a
                   href="/#contact"
-                  onClick={() => {
-                    analytics.event({
-                      action: "click",
-                      category: "Navigation",
-                      label: "Footer - Policies",
-                    });
-                  }}
                   className="text-white/70 hover:text-gold transition-colors text-sm"
                 >
                   Policies

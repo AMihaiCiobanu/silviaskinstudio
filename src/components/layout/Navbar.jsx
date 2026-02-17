@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, Phone, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
-import * as analytics from "../../utils/analytics";
 
 const navLinks = [
   { name: "Home", href: "/#home" },
@@ -60,13 +59,6 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => {
-                analytics.event({
-                  action: "click",
-                  category: "Navigation",
-                  label: `Menu - ${link.name}`,
-                });
-              }}
               className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-gold ${
                 isScrolled ? "text-charcoal" : "text-white"
               }`}
@@ -142,14 +134,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => {
-                    analytics.event({
-                      action: "click",
-                      category: "Navigation",
-                      label: `Menu - ${link.name} (Mobile)`,
-                    });
-                    setIsMobileMenuOpen(false);
-                  }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="block py-3 px-4 rounded-lg text-charcoal font-serif text-base hover:bg-butter hover:text-gold transition-all"
                 >
                   {link.name}
