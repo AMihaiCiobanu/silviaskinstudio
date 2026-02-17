@@ -28,7 +28,7 @@ const About = () => {
           >
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-2xl">
               <img
-                src="/src/assets/silvia.jpg"
+                src="/assets/silvia-about.jpg"
                 alt="Silvia - Skin Specialist"
                 className="object-cover w-full h-full"
               />
