@@ -1,12 +1,14 @@
+/** @format */
+
 @import "tailwindcss";
 
 @theme {
-  --color-butter: #FAF9F6;
-  --color-butter-light: #FDFBF7;
-  --color-gold: #D4AF37;
-  --color-gold-light: #F4CF57;
+  --color-butter: #faf9f6;
+  --color-butter-light: #fdfbf7;
+  --color-gold: #d4af37;
+  --color-gold-light: #f4cf57;
   --color-charcoal: #333333;
-  --color-charcoal-light: #4D4D4D;
+  --color-charcoal-light: #4d4d4d;
 
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -16,6 +18,11 @@ body {
   @apply bg-butter text-charcoal font-sans antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-serif;
 }

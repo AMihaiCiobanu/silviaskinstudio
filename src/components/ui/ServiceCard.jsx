@@ -47,7 +47,7 @@ const ServiceCard = ({
       )}
 
       <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-        <span className="text-xl font-serif text-gold font-medium">
+        <span className="text-xl font-serif text-charcoal font-medium">
           {price}
         </span>
         <Button
