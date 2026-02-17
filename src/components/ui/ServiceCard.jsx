@@ -46,18 +46,23 @@ const ServiceCard = ({
         </ul>
       )}
 
-      <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-        <span className="text-xl font-serif text-charcoal font-medium">
-          {price}
-        </span>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={onBook}
-          className="px-4 py-2 text-xs"
-        >
-          Book Now
-        </Button>
+      <div className="mt-auto border-t border-gray-100 pt-4">
+        <div className="flex items-center justify-between gap-4">
+          <span
+            className="text-xl font-serif text-charcoal font-medium flex-shrink-0"
+            style={{ fontVariantNumeric: "lining-nums tabular-nums" }}
+          >
+            {price}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onBook}
+            className="px-4 py-2 text-xs whitespace-nowrap"
+          >
+            Book Now
+          </Button>
+        </div>
       </div>
     </motion.div>
   );
