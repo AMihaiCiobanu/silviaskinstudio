@@ -82,7 +82,6 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                     )}
                     {service.price && (
                       <div className="flex items-center gap-1.5">
-                        <Star className="w-4 h-4" />
                         <span
                           className="font-medium"
                           style={{ fontVariantNumeric: "lining-nums" }}
