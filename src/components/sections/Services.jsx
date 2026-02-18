@@ -16,13 +16,28 @@ const categories = [
   { id: "packages", label: "Packages" },
 ];
 
+const categoryDescriptions = {
+  facials:
+    "We use premium Dermalogica products, globally trusted for their science-backed formulations that deliver visible results for all skin types.",
+  skinBoosters:
+    "Our treatments feature advanced products including Profhilo, Nucleofill, and Sunekos for enhanced skin hydration and rejuvenation.",
+  massage:
+    "Relax with therapeutic massages using Bellabacci Balm and pure grapeseed oil to nourish your skin and soothe your muscles.",
+  browsLashes:
+    "We exclusively use Nouveau Lashes products, renowned for their quality and long-lasting, natural-looking results.",
+  nails:
+    "Professional nail care using The Gel Bottle and OPI, industry-leading brands known for their durability and stunning color range.",
+  packages:
+    "Curated treatment combinations designed to give you the ultimate pampering experience at exceptional value.",
+};
+
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
 
   return (
     <section
       id="services"
-      className="py-16 md:py-20 lg:py-24 bg-charcoal relative overflow-hidden"
+      className="scroll-mt-16 py-16 md:py-20 lg:py-24 bg-charcoal relative overflow-hidden"
     >
       {/* Decorative background */}
       <div className="absolute top-0 left-0 w-1/2 h-full bg-gold/5 rounded-r-full pointer-events-none" />
@@ -57,6 +72,22 @@ const Services = () => {
             </button>
           ))}
         </div>
+
+        {/* Category Description */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`desc-${activeCategory}`}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+            className="mb-8 md:mb-10 text-center"
+          >
+            <p className="text-butter/90 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+              {categoryDescriptions[activeCategory]}
+            </p>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Services Grid */}
         <div className="min-h-[400px]">

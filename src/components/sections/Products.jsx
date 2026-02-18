@@ -5,23 +5,32 @@ import SectionTitle from "../ui/SectionTitle";
 
 const products = [
   {
-    name: "Dermalogica Daily Microfoliant",
-    description: "Iconic exfoliating powder for brighter, smoother skin.",
-    image:
-      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "BioLumin-C Serum",
-    description: "High-performance Vitamin C serum for brighter, firmer skin.",
-    image:
-      "https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Skin Smoothing Cream",
+    name: "Special Cleansing Gel",
     description:
-      "Next-generation moisturiser with Active HydraMesh Technology.",
+      "Dermalogica's #1 selling cleanser globally. Soap-free foaming gel cleanses all skin conditions.",
     image:
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://www.dermalogica.co.uk/cdn/shop/files/special-cleansing-gel-pdp.jpg",
+  },
+  {
+    name: "Circular Hydration Serum",
+    description:
+      "Long-lasting serum with Hyaluronic Acid that floods skin with hydration and replenishes from within.",
+    image:
+      "https://www.dermalogica.co.uk/cdn/shop/files/circular-hydration-serum-pdp.jpg",
+  },
+  {
+    name: "Daily Microfoliant",
+    description:
+      "Iconic exfoliating powder that activates with water to polish skin to perfection for brighter, smoother results.",
+    image:
+      "https://www.dermalogica.co.uk/cdn/shop/files/Daily_Microfoliant_-_2.6oz_FRONT_1.jpg",
+  },
+  {
+    name: "Intensive Moisture Balance",
+    description:
+      "Ultra-nourishing moisturiser that restores lipid balance to dry skin for optimal barrier performance.",
+    image:
+      "https://www.dermalogica.co.uk/cdn/shop/files/IntensiveMoistureBalance_Bottle_1.7oz.jpg",
   },
 ];
 
@@ -29,34 +38,56 @@ const Products = () => {
   return (
     <section
       id="products"
-      className="py-16 md:py-20 lg:py-24 bg-butter border-t border-gold/20"
+      className="py-16 md:py-20 lg:py-24 bg-charcoal border-t border-gold/40"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <SectionTitle title="Retail Collection" subtitle="Extend Your Glow" />
+      <div className="container mx-auto px-4 md:px-6 mb-12">
+        <div className="text-center space-y-3">
+          <p className="text-gold text-xs md:text-sm uppercase tracking-widest font-medium">
+            Extend Your Glow
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white">
+            Retail Collection
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="px-4 md:px-8 lg:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {products.map((product, index) => (
             <div
               key={index}
-              className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl text-center group hover:shadow-xl hover:bg-white transition-all duration-300 border border-gold/20"
+              className="bg-white/95 backdrop-blur-sm p-4 md:p-6 rounded-2xl text-center group hover:shadow-2xl hover:bg-white hover:scale-105 transition-all duration-300 border-2 border-gold/30 hover:border-gold"
             >
-              <div className="aspect-[4/5] bg-gray-100 rounded-lg mb-6 overflow-hidden relative">
+              <div className="aspect-[3/4] bg-butter/30 rounded-lg mb-4 overflow-hidden relative">
                 <img
                   src={product.image}
                   alt={product.name}
+                  loading="eager"
                   className="object-cover w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <h4 className="font-serif text-lg text-charcoal mb-2">
+              <h4 className="font-serif text-base md:text-lg text-charcoal mb-2">
                 {product.name}
               </h4>
-              <p className="text-sm text-charcoal/70">{product.description}</p>
-              <span className="inline-block mt-4 text-xs font-bold text-gold uppercase tracking-widest border-b border-gold/30 pb-1">
+              <p className="text-xs md:text-sm text-charcoal/80">
+                {product.description}
+              </p>
+              <span className="inline-block mt-3 md:mt-4 text-xs font-bold text-gold uppercase tracking-widest border-b-2 border-gold/50 pb-1">
                 Available In-Store
               </span>
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="text-center mt-12">
+        <a
+          href="/products"
+          className="inline-block bg-gold text-white px-8 py-3 rounded-full hover:bg-gold/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg hover:shadow-gold/50"
+        >
+          View All Products
+        </a>
       </div>
     </section>
   );

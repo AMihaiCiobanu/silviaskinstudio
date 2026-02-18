@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Certificates from "./pages/Certificates";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
+import AllProducts from "./pages/AllProducts";
 import * as analytics from "./utils/analytics";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="certificates" element={<Certificates />} />
+        <Route path="products" element={<AllProducts />} />
         <Route path="privacy" element={<PrivacyPolicy />} />
         <Route path="terms" element={<Terms />} />
       </Route>

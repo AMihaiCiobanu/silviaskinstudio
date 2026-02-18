@@ -6,7 +6,7 @@ import { X, Clock, Star, Calendar } from "lucide-react";
 import Button from "./Button";
 
 const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
-  // Close modal on ESC key press
+  // Close modal on ESC key press and hide navbar on mobile
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
@@ -14,10 +14,12 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
     }
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
     };
   }, [isOpen, onClose]);
 
@@ -152,23 +154,16 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                   </div>
                 )}
 
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-charcoal/10">
+                {/* Action Button */}
+                <div className="flex pt-6 border-t border-charcoal/10">
                   <Button
                     onClick={() => {
                       onBook();
                       onClose();
                     }}
-                    className="flex-1"
+                    className="w-full"
                   >
                     Book Now
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={onClose}
-                    className="flex-1"
-                  >
-                    Close
                   </Button>
                 </div>
               </div>

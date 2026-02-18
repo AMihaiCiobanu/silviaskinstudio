@@ -18,6 +18,19 @@ body {
   @apply bg-butter text-charcoal font-sans antialiased;
 }
 
+a[href],
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Hide navbar on mobile when modal is open */
+body.modal-open nav {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 h1,
 h2,
 h3,

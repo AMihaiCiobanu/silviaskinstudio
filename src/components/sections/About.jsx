@@ -11,7 +11,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-16 md:py-24 lg:py-32 bg-butter relative overflow-hidden"
+      className="scroll-mt-16 py-16 md:py-24 lg:py-32 bg-butter relative overflow-hidden"
     >
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
@@ -28,8 +28,9 @@ const About = () => {
           >
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-2xl">
               <img
-                src="/assets/silvia-about.jpg"
+                src="/assets/silvia-about.webp"
                 alt="Silvia - Skin Specialist"
+                loading="lazy"
                 className="object-cover w-full h-full"
               />
               <div className="absolute inset-0 bg-gold/10 mix-blend-overlay" />
@@ -111,15 +112,16 @@ const About = () => {
                     onClick={() =>
                       setSelectedImage({
                         id: i,
-                        src: `/certificates/cert${String(i).padStart(5, "0")}.jpeg`,
+                        src: `/assets/certificates/cert${String(i).padStart(5, "0")}.webp`,
                         alt: `Certificate ${i}`,
                       })
                     }
                     className="group relative overflow-hidden rounded-lg shadow-md h-[180px] md:h-[200px] cursor-pointer"
                   >
                     <img
-                      src={`/certificates/cert${String(i).padStart(5, "0")}.jpeg`}
+                      src={`/assets/certificates/cert${String(i).padStart(5, "0")}.webp`}
                       alt={`Certificate ${i}`}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />

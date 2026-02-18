@@ -8,17 +8,17 @@ import SectionTitle from "../components/ui/SectionTitle";
 const Certificates = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Generate certificate array from cert00001.jpeg to cert00014.jpeg
+  // Generate certificate array from cert00001.webp to cert00014.webp
   const certificates = Array.from({ length: 14 }, (_, i) => ({
     id: i + 1,
-    src: `/certificates/cert${String(i + 1).padStart(5, "0")}.jpeg`,
+    src: `/assets/certificates/cert${String(i + 1).padStart(5, "0")}.webp`,
     alt: `Certificate ${i + 1}`,
   }));
 
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-charcoal text-white py-12 md:py-16 lg:py-24">
+      <section className="bg-charcoal text-white pt-32 md:pt-40 pb-12 md:pb-16 lg:pb-24">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,6 +54,7 @@ const Certificates = () => {
                   <img
                     src={cert.src}
                     alt={cert.alt}
+                    loading={index < 6 ? "eager" : "lazy"}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">

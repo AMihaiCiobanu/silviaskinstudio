@@ -190,7 +190,7 @@ export const servicesData = {
                 "Biocompatible and highly effective"
             ],
             recommendedFor: "Aging skin, sun damage, scars, or anyone seeking advanced skin regeneration.",
-            treatmentFrequency: "Course of 2–3 sessions, 2–3 weeks apart. Maintenance every 6–12 months.",
+            treatmentFrequency: "Course of 2–3 sessions, 2–4 weeks apart. Maintenance every 6–12 months.",
             price: "£155",
             duration: "Session"
         }

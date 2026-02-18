@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-charcoal via-charcoal/95 to-gold/20"
+      className="scroll-mt-16 relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-charcoal via-charcoal/95 to-gold/20"
     >
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gold/10 rounded-full blur-[100px] pointer-events-none" />

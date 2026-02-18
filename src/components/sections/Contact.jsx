@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-16 md:py-20 lg:py-24 bg-gradient-to-r from-butter to-charcoal/5"
+      className="scroll-mt-16 py-16 md:py-20 lg:py-24 bg-gradient-to-r from-butter to-charcoal/5"
     >
       <div className="container mx-auto px-4 md:px-6">
         <SectionTitle

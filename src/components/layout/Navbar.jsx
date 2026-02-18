@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, X, Phone, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
@@ -15,8 +16,10 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,10 +29,37 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavLinkClick = (e, href) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    // Check if it's an anchor link
+    if (href.startsWith("/#")) {
+      const sectionId = href.substring(2); // Remove '/#'
+
+      if (isHomePage) {
+        // We're on home page, scroll to section
+        // Increased timeout to ensure DOM is ready after menu closes
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 200);
+      } else {
+        // We're on a different page, navigate to home with anchor
+        window.location.href = href;
+      }
+    } else {
+      // Non-anchor link, navigate normally
+      window.location.href = href;
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen
+        !isHomePage || isScrolled || isMobileMenuOpen
           ? "bg-white/95 backdrop-blur-md shadow-lg"
           : "bg-transparent"
       }`}
@@ -39,14 +69,18 @@ const Navbar = () => {
         <a href="/" className="flex flex-col z-50 flex-shrink-0">
           <span
             className={`font-serif text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300 ${
-              isScrolled || isMobileMenuOpen ? "text-gold" : "text-white"
+              !isHomePage || isScrolled || isMobileMenuOpen
+                ? "text-gold"
+                : "text-white"
             }`}
           >
             SILVIA
           </span>
           <span
             className={`text-xs tracking-[0.15em] font-sans uppercase transition-colors duration-300 ${
-              isScrolled || isMobileMenuOpen ? "text-charcoal" : "text-white/70"
+              !isHomePage || isScrolled || isMobileMenuOpen
+                ? "text-charcoal"
+                : "text-white/70"
             }`}
           >
             Skin Studio
@@ -59,19 +93,20 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavLinkClick(e, link.href)}
               className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-gold ${
-                isScrolled ? "text-charcoal" : "text-white"
+                !isHomePage || isScrolled ? "text-charcoal" : "text-white"
               }`}
             >
               {link.name}
             </a>
           ))}
           <Button
-            variant={isScrolled ? "primary" : "outline"}
+            variant={!isHomePage || isScrolled ? "primary" : "outline"}
             onClick={() => (window.location.href = "tel:+447427619245")}
             data-analytics="navbar-book-desktop"
             className={
-              isScrolled
+              !isHomePage || isScrolled
                 ? ""
                 : "text-white border-white hover:text-white hover:border-gold"
             }
@@ -87,7 +122,7 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           <Menu
-            className={`w-6 h-6 ${isScrolled ? "text-charcoal" : "text-white"}`}
+            className={`w-6 h-6 ${!isHomePage || isScrolled ? "text-charcoal" : "text-white"}`}
           />
         </button>
       </div>
@@ -134,7 +169,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavLinkClick(e, link.href)}
                   className="block py-3 px-4 rounded-lg text-charcoal font-serif text-base hover:bg-butter hover:text-gold transition-all"
                 >
                   {link.name}
