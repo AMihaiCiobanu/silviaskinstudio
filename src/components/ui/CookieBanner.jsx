@@ -3,48 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
-import * as analytics from "../../utils/analytics";
-
-// Cookie expiration periods (in days)
-const CONSENT_EXPIRY = {
-  accepted: 365, // 1 year for accepted
-  declined: 30, // 30 days for declined (will ask again)
-};
-
-// Helper functions for cookie consent with expiration
-const setCookieConsent = (value) => {
-  const expiryDays = CONSENT_EXPIRY[value];
-  const expiryDate = new Date();
-  expiryDate.setDate(expiryDate.getDate() + expiryDays);
-
-  const consentData = {
-    value: value,
-    expiry: expiryDate.getTime(),
-  };
-
-  localStorage.setItem("cookieConsent", JSON.stringify(consentData));
-};
-
-const getCookieConsent = () => {
-  try {
-    const stored = localStorage.getItem("cookieConsent");
-    if (!stored) return null;
-
-    const consentData = JSON.parse(stored);
-
-    // Check if expired
-    if (new Date().getTime() > consentData.expiry) {
-      localStorage.removeItem("cookieConsent");
-      return null;
-    }
-
-    return consentData.value;
-  } catch (e) {
-    // Handle old format (plain string) - remove it
-    localStorage.removeItem("cookieConsent");
-    return null;
-  }
-};
+import {
+  getCookieConsent,
+  setCookieConsent,
+  initializeGA,
+  event as analyticsEvent,
+} from "../../utils/analytics";
 
 const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,12 +24,22 @@ const CookieBanner = () => {
 
   const handleAccept = () => {
     setCookieConsent("accepted");
-    analytics.initializeGA(); // Initialize Google Analytics
+    initializeGA(); // Initialize Google Analytics
+    analyticsEvent({
+      action: "accept",
+      category: "CookieConsent",
+      label: "cookie-banner",
+    });
     setIsVisible(false);
   };
 
   const handleDecline = () => {
     setCookieConsent("declined");
+    analyticsEvent({
+      action: "decline",
+      category: "CookieConsent",
+      label: "cookie-banner",
+    });
     setIsVisible(false);
   };
 
