@@ -1,12 +1,27 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import SectionTitle from "../components/ui/SectionTitle";
+import SEO from "../components/SEO";
+import { useModalState } from "../components/ModalProvider";
 
 const Certificates = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const { setHasModalOpen } = useModalState();
+
+  useEffect(() => {
+    if (selectedImage) {
+      setHasModalOpen(true);
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
+    } else {
+      setHasModalOpen(false);
+      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
+    }
+  }, [selectedImage, setHasModalOpen]);
 
   // Generate certificate array from cert00001.webp to cert00014.webp
   const certificates = Array.from({ length: 14 }, (_, i) => ({
@@ -17,6 +32,10 @@ const Certificates = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Silvia Skin Studio | Professional Certifications"
+        description="View Silvia Skin Studio's professional certifications in skincare, aesthetics, and massage therapy, showcasing advanced qualifications and continuous education."
+      />
       {/* Header */}
       <section className="bg-charcoal text-white pt-32 md:pt-40 pb-12 md:pb-16 lg:pb-24">
         <div className="container mx-auto px-4 md:px-6">

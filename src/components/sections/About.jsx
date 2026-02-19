@@ -1,14 +1,29 @@
 /** @format */
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FileText, Download, X } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
+import { useModalState } from "../ModalProvider";
 import { event as analyticsEvent } from "../../utils/analytics";
 
 const About = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { setHasModalOpen } = useModalState();
+
+  useEffect(() => {
+    if (selectedImage) {
+      setHasModalOpen(true);
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
+    } else {
+      setHasModalOpen(false);
+      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
+    }
+  }, [selectedImage, setHasModalOpen]);
   return (
     <section
       id="about"
@@ -21,10 +36,10 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image Side */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={shouldReduceMotion ? undefined : { opacity: 0, x: -50 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.8 }}
             className="relative"
           >
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-2xl">
@@ -47,10 +62,10 @@ const About = () => {
 
           {/* Content Side */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={shouldReduceMotion ? undefined : { opacity: 0, x: 50 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.8 }}
           >
             <SectionTitle
               title="Welcome to Your Beauty & Wellness Experience"

@@ -2,10 +2,15 @@
 
 import React from "react";
 import SectionTitle from "../components/ui/SectionTitle";
+import SEO from "../components/SEO";
 
 const PrivacyPolicy = () => {
   return (
     <div className="pt-32 pb-20 container mx-auto px-6 max-w-4xl">
+      <SEO
+        title="Silvia Skin Studio | Privacy Policy"
+        description="Read Silvia Skin Studio's privacy policy to learn how we collect, use, and protect your personal data and cookie preferences."
+      />
       <SectionTitle title="Privacy Policy" subtitle="Legal" centered={false} />
       <div className="prose prose-stone max-w-none text-charcoal/80">
         <p>Last updated: February 2026</p>

@@ -2,10 +2,15 @@
 
 import React from "react";
 import SectionTitle from "../components/ui/SectionTitle";
+import SEO from "../components/SEO";
 
 const Terms = () => {
   return (
     <div className="pt-32 pb-20 container mx-auto px-6 max-w-4xl">
+      <SEO
+        title="Silvia Skin Studio | Terms & Conditions"
+        description="Review Silvia Skin Studio's terms and conditions for appointments, cancellations, gift certificates, and use of this website."
+      />
       <SectionTitle
         title="Terms & Conditions"
         subtitle="Legal"

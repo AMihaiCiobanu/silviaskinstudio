@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import SectionTitle from "../ui/SectionTitle";
 import ServiceCard from "../ui/ServiceCard";
 import { servicesData } from "../../data/services";
@@ -33,6 +33,7 @@ const categoryDescriptions = {
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -77,10 +78,10 @@ const Services = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={`desc-${activeCategory}`}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.3 }}
+            initial={shouldReduceMotion ? undefined : { opacity: 0, y: -10 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: 10 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
             className="mb-8 md:mb-10 text-center"
           >
             <p className="text-butter/90 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
@@ -94,10 +95,10 @@ const Services = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              exit={shouldReduceMotion ? undefined : { opacity: 0, y: -20 }}
+              transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
             >
               {servicesData[activeCategory]?.map((service, index) => (

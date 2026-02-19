@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import SectionTitle from "../ui/SectionTitle";
 
 const reviews = [
@@ -24,6 +24,8 @@ const reviews = [
 ];
 
 const Reviews = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="reviews"
@@ -36,10 +38,12 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={
+                shouldReduceMotion ? undefined : { delay: index * 0.1, duration: 0.5 }
+              }
               className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-gold/20 hover:shadow-xl hover:bg-white hover:border-gold/50 transition-all duration-300 flex flex-col items-center text-center relative"
             >
               {/* Quote Icon */}

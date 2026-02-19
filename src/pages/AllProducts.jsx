@@ -3,6 +3,7 @@
 import React from "react";
 import SectionTitle from "../components/ui/SectionTitle";
 import { event as analyticsEvent } from "../utils/analytics";
+import SEO from "../components/SEO";
 
 const allProducts = [
   {
@@ -72,6 +73,10 @@ const allProducts = [
 const AllProducts = () => {
   return (
     <div className="min-h-screen bg-butter">
+      <SEO
+        title="Silvia Skin Studio | Professional Dermalogica Skincare Products"
+        description="Explore the complete collection of professional Dermalogica skincare products available at Silvia Skin Studio. Cleanser, exfoliant, serum, moisturiser and more."
+      />
       {/* Hero Section */}
       <section className="pt-32 md:pt-40 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-b from-gold/10 to-transparent border-b border-gold/20">
         <div className="container mx-auto px-4 md:px-6">
@@ -108,7 +113,7 @@ const AllProducts = () => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    loading="eager"
+                    loading="lazy"
                     className="object-cover w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                   />
                   <span className="absolute top-3 right-3 bg-gold text-white text-xs px-3 py-1 rounded-full font-medium">

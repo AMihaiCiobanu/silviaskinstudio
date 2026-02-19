@@ -8,10 +8,15 @@ import Products from "../components/sections/Products";
 import Gallery from "../components/sections/Gallery";
 import Reviews from "../components/sections/Reviews";
 import Contact from "../components/sections/Contact";
+import SEO from "../components/SEO";
 
 const Home = () => {
   return (
     <>
+      <SEO
+        title="Silvia Skin Studio | Advanced Facials & Massage Therapy in Colchester"
+        description="Silvia Skin Studio offers expert facials, skin treatments, and massage therapy in Colchester, UK. Level 5 Aesthetician providing personalised, results-driven treatments."
+      />
       <Hero />
       <About />
       <Services />

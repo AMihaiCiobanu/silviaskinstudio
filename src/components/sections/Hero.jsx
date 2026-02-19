@@ -1,10 +1,12 @@
 /** @format */
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Button from "../ui/Button";
 
 const Hero = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="home"
@@ -17,9 +19,9 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-20 text-center px-6 py-20 max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
           className="space-y-6 md:space-y-8"
         >
           <span className="block text-gold text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase font-sans font-medium">
@@ -60,9 +62,9 @@ const Hero = () => {
 
       {/* Scroll Indicator - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        initial={shouldReduceMotion ? undefined : { opacity: 0 }}
+        animate={shouldReduceMotion ? undefined : { opacity: 1 }}
+        transition={shouldReduceMotion ? undefined : { delay: 1, duration: 1 }}
         className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
       >
         <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent mx-auto" />

@@ -1,14 +1,15 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import Home from "./pages/Home";
-import Certificates from "./pages/Certificates";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Terms from "./pages/Terms";
-import AllProducts from "./pages/AllProducts";
 import * as analytics from "./utils/analytics";
+
+const Home = lazy(() => import("./pages/Home"));
+const Certificates = lazy(() => import("./pages/Certificates"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Terms = lazy(() => import("./pages/Terms"));
+const AllProducts = lazy(() => import("./pages/AllProducts"));
 
 function App() {
   const location = useLocation();
@@ -24,15 +25,23 @@ function App() {
   }, [location]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="certificates" element={<Certificates />} />
-        <Route path="products" element={<AllProducts />} />
-        <Route path="privacy" element={<PrivacyPolicy />} />
-        <Route path="terms" element={<Terms />} />
-      </Route>
-    </Routes>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-butter text-charcoal">
+          Loading…
+        </div>
+      }
+    >
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="certificates" element={<Certificates />} />
+          <Route path="products" element={<AllProducts />} />
+          <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<Terms />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 

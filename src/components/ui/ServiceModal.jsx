@@ -4,8 +4,10 @@ import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Clock, Star, Calendar } from "lucide-react";
 import Button from "./Button";
+import { useModalState } from "../ModalProvider";
 
 const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
+  const { setHasModalOpen } = useModalState();
   // Close modal on ESC key press and hide navbar on mobile
   useEffect(() => {
     const handleEscape = (e) => {
@@ -15,13 +17,15 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
       document.body.classList.add("modal-open");
+      setHasModalOpen(true);
     }
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
       document.body.classList.remove("modal-open");
+      setHasModalOpen(false);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, setHasModalOpen]);
 
   if (!service) return null;
 
