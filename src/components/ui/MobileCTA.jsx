@@ -1,19 +1,42 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Phone, Instagram } from "lucide-react";
 import { useModalState } from "../ModalProvider";
 
 const MobileCTA = () => {
   const { hasModalOpen } = useModalState();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleScroll = () => {
+      const threshold = 200;
+      setIsVisible(window.scrollY > threshold);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   if (hasModalOpen) {
     return null;
   }
 
   return (
-    <div className="md:hidden fixed inset-x-4 bottom-4 z-40">
-      <div className="bg-charcoal text-white rounded-2xl shadow-2xl border border-gold/40 px-4 py-3 flex items-center justify-between gap-3">
+    <div className="md:hidden fixed inset-x-4 bottom-4 z-40 pointer-events-none">
+      <div
+        className={`bg-charcoal text-white rounded-2xl shadow-2xl border border-gold/40 px-4 py-3 flex items-center justify-between gap-3 transform transition-all duration-500 ease-out ${
+          isVisible
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-4"
+        }`}
+      >
         <div className="flex flex-col">
           <span className="text-xs uppercase tracking-[0.18em] text-white/60">
             Silvia Skin Studio
