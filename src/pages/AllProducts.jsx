@@ -2,6 +2,7 @@
 
 import React from "react";
 import SectionTitle from "../components/ui/SectionTitle";
+import { event as analyticsEvent } from "../utils/analytics";
 
 const allProducts = [
   {
@@ -93,7 +94,15 @@ const AllProducts = () => {
             {allProducts.map((product, index) => (
               <div
                 key={index}
-                className="bg-white/60 backdrop-blur-sm p-4 md:p-6 rounded-2xl text-center group hover:shadow-xl hover:bg-white transition-all duration-300 border border-gold/20"
+                className="bg-white/60 backdrop-blur-sm p-4 md:p-6 rounded-2xl text-center group hover:shadow-xl hover:bg-white transition-all duration-300 border border-gold/20 cursor-pointer"
+                onClick={() =>
+                  analyticsEvent({
+                    action: "click",
+                    category: "Product",
+                    label: product.name,
+                    value: index,
+                  })
+                }
               >
                 <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
                   <img

@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { Menu, X, Phone, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
+import { event as analyticsEvent } from "../../utils/analytics";
 
 const navLinks = [
   { name: "Home", href: "/#home" },
@@ -32,6 +33,12 @@ const Navbar = () => {
   const handleNavLinkClick = (e, href) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
+
+    analyticsEvent({
+      action: "click",
+      category: "Navigation",
+      label: href,
+    });
 
     // Check if it's an anchor link
     if (href.startsWith("/#")) {
@@ -189,6 +196,13 @@ const Navbar = () => {
               <div className="flex justify-center gap-4 pt-2">
                 <a
                   href="tel:+447427619245"
+                  onClick={() =>
+                    analyticsEvent({
+                      action: "click",
+                      category: "Navigation",
+                      label: "mobile-phone-icon",
+                    })
+                  }
                   className="p-2.5 rounded-full bg-butter text-charcoal hover:bg-gold hover:text-white transition-all"
                 >
                   <Phone size={18} />
@@ -197,6 +211,13 @@ const Navbar = () => {
                   href="https://instagram.com/silviaskinstudio"
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    analyticsEvent({
+                      action: "click",
+                      category: "Navigation",
+                      label: "mobile-instagram-icon",
+                    })
+                  }
                   className="p-2.5 rounded-full bg-butter text-charcoal hover:bg-gold hover:text-white transition-all"
                 >
                   <Instagram size={18} />

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FileText, Download, X } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
+import { event as analyticsEvent } from "../../utils/analytics";
 
 const About = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -102,21 +103,30 @@ const About = () => {
 
               {/* Certificate Images Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
-                {[1, 2, 3, 4].map((i) => (
+                {[1, 2, 3, 4].map((i, index) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    onClick={() =>
-                      setSelectedImage({
+                    onClick={() => {
+                      const imageData = {
                         id: i,
                         src: `/assets/certificates/cert${String(i).padStart(5, "0")}.webp`,
                         alt: `Certificate ${i}`,
-                      })
-                    }
-                    className="group relative overflow-hidden rounded-lg shadow-md h-[180px] md:h-[200px] cursor-pointer"
+                      };
+
+                      setSelectedImage(imageData);
+                      analyticsEvent({
+                        action: "open",
+                        category: "Certificate",
+                        label: `about-grid-cert-${i}`,
+                      });
+                    }}
+                    className={`group relative overflow-hidden rounded-lg shadow-md h-[180px] md:h-[200px] cursor-pointer ${
+                      index > 1 ? "hidden md:block" : ""
+                    }`}
                   >
                     <img
                       src={`/assets/certificates/cert${String(i).padStart(5, "0")}.webp`}
