@@ -39,7 +39,12 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-4 px-4">
             <Button
               variant="primary"
-              onClick={() => (window.location.href = "tel:+447427619245")}
+              onClick={() =>
+                window.open(
+                  "https://www.instagram.com/direct/t/17849210577536768/",
+                  "_blank"
+                )
+              }
               data-analytics="hero-book"
               className="w-full sm:w-auto min-w-[200px] py-4 text-base"
             >

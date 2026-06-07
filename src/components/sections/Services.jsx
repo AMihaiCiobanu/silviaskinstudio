@@ -106,7 +106,12 @@ const Services = () => {
                   key={index}
                   {...service}
                   fullService={service}
-                  onBook={() => (window.location.href = "tel:+447427619245")}
+                  onBook={() =>
+                    window.open(
+                      "https://www.instagram.com/direct/t/17849210577536768/",
+                      "_blank"
+                    )
+                  }
                 />
               ))}
             </motion.div>
