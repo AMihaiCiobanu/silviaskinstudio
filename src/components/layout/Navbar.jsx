@@ -110,12 +110,7 @@ const Navbar = () => {
           ))}
           <Button
             variant={!isHomePage || isScrolled ? "primary" : "outline"}
-            onClick={() =>
-              window.open(
-                "https://www.instagram.com/direct/t/17849210577536768/",
-                "_blank"
-              )
-            }
+            onClick={() => (window.location.href = "tel:+447427619245")}
             data-analytics="navbar-book-desktop"
             className={
               !isHomePage || isScrolled
@@ -192,12 +187,7 @@ const Navbar = () => {
             {/* Mobile Menu Footer */}
             <div className="border-t border-gold/20 p-6 space-y-4">
               <Button
-                onClick={() =>
-                  window.open(
-                    "https://www.instagram.com/direct/t/17849210577536768/",
-                    "_blank"
-                  )
-                }
+                onClick={() => (window.location.href = "tel:+447427619245")}
                 data-analytics="navbar-book-mobile"
                 className="w-full"
               >

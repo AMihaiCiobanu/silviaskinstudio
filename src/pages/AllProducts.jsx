@@ -149,9 +149,7 @@ const AllProducts = () => {
             perfect products for your unique skin needs.
           </p>
           <a
-            href="https://www.instagram.com/direct/t/17849210577536768/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+447427619245"
             className="inline-block bg-gold text-white px-8 py-3 rounded-full hover:bg-gold/90 transition-colors duration-300 font-medium"
           >
             Book Consultation
