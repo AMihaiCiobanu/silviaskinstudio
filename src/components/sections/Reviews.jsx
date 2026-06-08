@@ -64,7 +64,7 @@ const Reviews = () => {
               transition={
                 shouldReduceMotion ? undefined : { delay: index * 0.1, duration: 0.5 }
               }
-              className="bg-white/50 backdrop-blur-sm p-1 pt-8 md:p-2 md:pt-8 rounded-2xl shadow-sm border border-gold/20 hover:shadow-xl hover:bg-white hover:border-gold/50 transition-all duration-300 flex flex-col items-center text-center relative"
+              className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-gold/20 hover:shadow-xl hover:bg-white hover:border-gold/50 transition-all duration-300 flex flex-col items-center text-center relative"
             >
               {/* Quote Icon */}
               <div className="absolute top-4 left-6 text-6xl text-gold/10 font-serif leading-none">
