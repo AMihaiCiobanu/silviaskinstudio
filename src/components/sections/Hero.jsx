@@ -24,16 +24,16 @@ const Hero = () => {
           transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
           className="space-y-6 md:space-y-8"
         >
-          <span className="block text-gold text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase font-sans font-medium">
+          <span className="block animate-heartbeat text-gold text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase font-sans font-medium">
             Welcome to Your Sanctuary
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight px-4">
+          <h1 className="title-sweep text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif leading-tight px-4">
             Silvia Skin Studio
           </h1>
           <p className="text-base md:text-lg lg:text-xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed px-4">
             Expert Skin Specialist & Massage Therapy in the UK.
             <br className="hidden sm:block" />
-            Where advanced aesthetics meet deep relaxation.
+            &nbsp;Where advanced aesthetics meet deep relaxation.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-4 px-4">

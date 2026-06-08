@@ -39,3 +39,117 @@ h5,
 h6 {
   @apply font-serif;
 }
+
+/* Hide scrollbar but keep scroll/swipe (slider track) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Premium text shimmer animation */
+.animate-shimmer {
+  color: var(--color-gold);
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--color-gold) 0%,
+      var(--color-gold-light) 25%,
+      var(--color-butter-light) 50%,
+      var(--color-gold-light) 75%,
+      var(--color-gold) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0%, 60% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer {
+    animation: none !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--color-gold) !important;
+    color: var(--color-gold) !important;
+  }
+}
+
+/* Title gold band sweeping left -> right, progressive across each letter */
+.title-sweep {
+  color: #ffffff;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .title-sweep {
+    background: linear-gradient(
+      100deg,
+      #ffffff 0%,
+      #ffffff 38%,
+      var(--color-gold) 47%,
+      var(--color-gold-light) 50%,
+      var(--color-gold) 53%,
+      #ffffff 62%,
+      #ffffff 100%
+    );
+    background-size: 300% 100%;
+    background-position: 150% center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-sweep 5s linear infinite;
+  }
+}
+
+@keyframes title-sweep {
+  0% {
+    background-position: 150% center;
+  }
+  100% {
+    background-position: -150% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title-sweep {
+    animation: none !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+}
+
+/* Heartbeat pulse — double beat then rest */
+.animate-heartbeat {
+  animation: heartbeat 2.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  10%  { transform: scale(1.06); }
+  20%  { transform: scale(1); }
+  30%  { transform: scale(1.04); }
+  40%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-heartbeat {
+    animation: none !important;
+  }
+}
