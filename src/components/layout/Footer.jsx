@@ -6,7 +6,7 @@ import { Instagram, MapPin, Phone, Mail } from "lucide-react";
 const Footer = () => {
   return (
     <footer
-      className="bg-charcoal text-white pt-16 md:pt-20 pb-8 md:pb-10"
+      className="bg-charcoal text-white pt-16 md:pt-20 pb-25 md:pb-10"
       role="contentinfo"
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -143,6 +143,68 @@ const Footer = () => {
               Terms & Conditions
             </a>
           </div>
+        </div>
+
+        <div className="mt-6 md:mt-8 flex justify-center">
+          <a
+            href="https://softsapps.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Made by SoftApps"
+            className="inline-flex items-center gap-2 text-xs text-white/50 opacity-90 hover:opacity-100 transition-opacity"
+          >
+            <span>Made by</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 380 100"
+              role="img"
+              aria-label="SoftApps"
+              className="h-6 w-auto"
+            >
+              <defs>
+                <linearGradient id="saLogo" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#22d3ee" />
+                  <stop offset="0.5" stopColor="#7c3aed" />
+                  <stop offset="1" stopColor="#ec4899" />
+                </linearGradient>
+              </defs>
+              <rect
+                x="6"
+                y="14"
+                width="72"
+                height="72"
+                rx="20"
+                fill="#0a0e1a"
+              />
+              <rect
+                x="6"
+                y="14"
+                width="72"
+                height="72"
+                rx="20"
+                fill="none"
+                stroke="url(#saLogo)"
+                strokeWidth="2.5"
+              />
+              <path
+                d="M56 38 C56 31 49 29 42 29 C34 29 28 32 28 39 C28 47 37 49 42 51 C47 53 56 55 56 63 C56 70 48 72 42 72 C35 72 28 70 28 62"
+                fill="none"
+                stroke="url(#saLogo)"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              <text
+                x="96"
+                y="62"
+                fontFamily="'Space Grotesk', system-ui, sans-serif"
+                fontSize="42"
+                fontWeight="700"
+                fill="#f4f7ff"
+              >
+                Soft<tspan fill="url(#saLogo)">Apps</tspan>
+              </text>
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
