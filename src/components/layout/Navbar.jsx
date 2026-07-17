@@ -63,31 +63,32 @@ const Navbar = () => {
     }
   };
 
+  const showSolidHeader = !isHomePage || isScrolled || isMobileMenuOpen;
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-700 ease-luxe ${
-        !isHomePage || isScrolled || isMobileMenuOpen
-          ? "bg-butter/90 backdrop-blur-md border-b border-charcoal/8"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Blur stays on the header bar only — backdrop-filter on <nav> would
+          clip fixed-position mobile menu children to the header height. */}
+      <div
+        className={`transition-colors duration-700 ease-luxe ${
+          showSolidHeader
+            ? "bg-butter/90 backdrop-blur-md border-b border-charcoal/8"
+            : "bg-transparent border-b border-transparent"
+        } ${isMobileMenuOpen ? "max-md:hidden" : ""}`}
+      >
+        <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex flex-col z-50 flex-shrink-0 leading-none">
           <span
             className={`font-serif font-light text-2xl md:text-[1.75rem] tracking-[0.12em] transition-colors duration-700 ease-luxe ${
-              !isHomePage || isScrolled || isMobileMenuOpen
-                ? "text-charcoal"
-                : "text-white"
+              showSolidHeader ? "text-charcoal" : "text-white"
             }`}
           >
             SILVIA
           </span>
           <span
             className={`eyebrow text-[9px] mt-1.5 transition-colors duration-700 ease-luxe ${
-              !isHomePage || isScrolled || isMobileMenuOpen
-                ? "text-gold"
-                : "text-white/55"
+              showSolidHeader ? "text-gold" : "text-white/55"
             }`}
           >
             Skin Studio
@@ -134,6 +135,7 @@ const Navbar = () => {
             className={`w-5 h-5 ${!isHomePage || isScrolled ? "text-charcoal" : "text-white"}`}
           />
         </button>
+        </div>
       </div>
 
       {/* Mobile Menu Backdrop */}
