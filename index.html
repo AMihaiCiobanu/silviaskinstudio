@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- No viewport-fit=cover: without it iOS insets the viewport below the status
+       bar and extends the fixed nav's colour up behind the clock on its own, so
+       the header needs no safe-area padding. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1c1b19" />
 
   <!-- SEO Meta Tags -->

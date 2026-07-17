@@ -24,9 +24,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Solid header immediately on mobile — avoids transparent bleed while scrolling
+      const threshold = window.matchMedia("(max-width: 767px)").matches ? 1 : 50;
+      setIsScrolled(window.scrollY > threshold);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -65,13 +68,15 @@ const Navbar = () => {
 
   const showSolidHeader = !isHomePage || isScrolled || isMobileMenuOpen;
 
+  // Transparent at the top on every breakpoint: the hero's radial gradient runs
+  // under the nav, and an opaque fill would cut a visible band across it.
+  const headerBgClass = showSolidHeader
+    ? "bg-butter md:bg-butter/90 md:backdrop-blur-md border-b border-charcoal/8"
+    : "bg-transparent border-b border-transparent";
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-colors duration-700 ease-luxe ${
-        showSolidHeader
-          ? "bg-butter md:bg-butter/90 md:backdrop-blur-md border-b border-charcoal/8"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-700 ease-luxe ${headerBgClass}`}
     >
       <div className={isMobileMenuOpen ? "max-md:hidden" : ""}>
         <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
@@ -152,7 +157,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.25 }}
-            className="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-butter z-40 flex flex-col md:hidden overflow-y-auto border-l border-gold/20 pt-[env(safe-area-inset-top,0px)]"
+            className="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-butter z-40 flex flex-col md:hidden overflow-y-auto border-l border-gold/20"
           >
             {/* Mobile Menu Header */}
             <div className="p-7 flex items-center justify-between border-b border-gold/20">
