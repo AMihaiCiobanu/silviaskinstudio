@@ -49,43 +49,44 @@ const Reviews = () => {
   return (
     <section
       id="reviews"
-      className="py-16 md:py-20 lg:py-24 bg-butter border-t border-gold/20"
+      className="py-28 md:py-40 bg-butter border-t border-gold/15"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <SectionTitle title="Client Love" subtitle="Testimonials" />
+      <div className="container mx-auto px-6 md:px-8">
+        <SectionTitle title="In their words" subtitle="Testimonials" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-16 md:gap-y-20">
           {reviews.map((review, index) => (
-            <motion.div
+            <motion.figure
               key={index}
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
               whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={
-                shouldReduceMotion ? undefined : { delay: index * 0.1, duration: 0.5 }
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      delay: (index % 2) * 0.12,
+                      duration: 1,
+                      ease: [0.22, 1, 0.36, 1],
+                    }
               }
-              className="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-gold/20 hover:shadow-xl hover:bg-white hover:border-gold/50 transition-all duration-300 flex flex-col items-center text-center relative"
+              className="flex flex-col items-start"
             >
-              {/* Quote Icon */}
-              <div className="absolute top-4 left-6 text-6xl text-gold/10 font-serif leading-none">
-                “
+              <div className="flex gap-1 mb-6" aria-label={`${review.rating} out of 5 stars`}>
+                {[...Array(review.rating)].map((_, i) => (
+                  <Star key={i} className="w-3 h-3 text-gold fill-current" aria-hidden="true" />
+                ))}
               </div>
 
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <span className="font-serif font-medium text-charcoal">
-                  {review.path}
-                </span>
-                <div className="flex gap-1">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-gold fill-current" />
-                  ))}
-                </div>
-              </div>
+              <blockquote className="font-serif font-light italic text-charcoal/85 text-xl md:text-2xl leading-[1.6]">
+                {review.text}
+              </blockquote>
 
-              <p className="text-charcoal/80 italic leading-relaxed flex-grow">
-                "{review.text}"
-              </p>
-            </motion.div>
+              <figcaption className="mt-7 flex items-center gap-4">
+                <span className="h-px w-8 bg-gold/50" aria-hidden="true" />
+                <span className="eyebrow text-charcoal/50">{review.path}</span>
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
       </div>

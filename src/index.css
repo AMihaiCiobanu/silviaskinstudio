@@ -3,25 +3,53 @@
 @import "tailwindcss";
 
 @theme {
-  --color-butter: #faf9f6;
-  --color-butter-light: #fdfbf7;
-  --color-gold: #d4af37;
-  --color-gold-light: #f4cf57;
-  --color-charcoal: #333333;
-  --color-charcoal-light: #4d4d4d;
+  --color-butter: #f8f6f1;
+  --color-butter-light: #fdfcfa;
+  --color-butter-dark: #efebe2;
+  --color-gold: #c9a961;
+  --color-gold-light: #dcc389;
+  --color-gold-dark: #a88b4a;
+  --color-charcoal: #1c1b19;
+  --color-charcoal-light: #3a3835;
 
-  --font-serif: "Playfair Display", serif;
+  --font-serif: "Cormorant Garamond", "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* One radius for the whole site — enough to soften the corner, not enough to
+     read as a rounded UI. Tune here, nowhere else. */
+  --radius-soft: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   @apply bg-butter text-charcoal font-sans antialiased;
 }
 
+::selection {
+  background: var(--color-gold);
+  color: #ffffff;
+}
+
 a[href],
 button,
 [role="button"] {
   cursor: pointer;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
 /* Hide navbar on mobile when modal is open */
@@ -38,6 +66,19 @@ h4,
 h5,
 h6 {
   @apply font-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Film grain — sits above everything, purely optical */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Hide scrollbar but keep scroll/swipe (slider track) */
@@ -49,107 +90,66 @@ h6 {
   display: none;
 }
 
-/* Premium text shimmer animation */
-.animate-shimmer {
-  color: var(--color-gold);
+/* Eyebrow label above section titles */
+.eyebrow {
+  @apply font-sans uppercase;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
 }
 
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .animate-shimmer {
-    background: linear-gradient(
-      90deg,
-      var(--color-gold) 0%,
-      var(--color-gold-light) 25%,
-      var(--color-butter-light) 50%,
-      var(--color-gold-light) 75%,
-      var(--color-gold) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 6s ease-in-out infinite;
-  }
+/* Hairline rule with a centred diamond — section ornament */
+.rule-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
-@keyframes shimmer {
-  0%, 60% {
-    background-position: 200% center;
-  }
-  100% {
-    background-position: -200% center;
-  }
+.rule-ornament::before,
+.rule-ornament::after {
+  content: "";
+  height: 1px;
+  width: 3rem;
+  background: color-mix(in srgb, var(--color-gold) 40%, transparent);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-shimmer {
-    animation: none !important;
-    background: none !important;
-    -webkit-text-fill-color: var(--color-gold) !important;
-    color: var(--color-gold) !important;
-  }
+.rule-ornament > span {
+  width: 4px;
+  height: 4px;
+  transform: rotate(45deg);
+  background: var(--color-gold);
 }
 
-/* Title gold band sweeping left -> right, progressive across each letter */
-.title-sweep {
-  color: #ffffff;
+/* Lining numerals for prices */
+.numerals {
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .title-sweep {
-    background: linear-gradient(
-      100deg,
-      #ffffff 0%,
-      #ffffff 38%,
-      var(--color-gold) 47%,
-      var(--color-gold-light) 50%,
-      var(--color-gold) 53%,
-      #ffffff 62%,
-      #ffffff 100%
-    );
-    background-size: 300% 100%;
-    background-position: 150% center;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: title-sweep 5s linear infinite;
-  }
+/* Slow gold fill on hover — used by outline buttons */
+.fill-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-@keyframes title-sweep {
-  0% {
-    background-position: 150% center;
-  }
-  100% {
-    background-position: -150% center;
-  }
+.fill-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-luxe);
+}
+
+.fill-sweep:hover::after {
+  transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .title-sweep {
-    animation: none !important;
-    background: none !important;
-    -webkit-text-fill-color: #ffffff !important;
-    color: #ffffff !important;
-  }
-}
-
-/* Heartbeat pulse — double beat then rest */
-.animate-heartbeat {
-  animation: heartbeat 2.4s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
-  0%   { transform: scale(1); }
-  10%  { transform: scale(1.06); }
-  20%  { transform: scale(1); }
-  30%  { transform: scale(1.04); }
-  40%  { transform: scale(1); }
-  100% { transform: scale(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-heartbeat {
-    animation: none !important;
+  .fill-sweep::after {
+    transition: none;
   }
 }

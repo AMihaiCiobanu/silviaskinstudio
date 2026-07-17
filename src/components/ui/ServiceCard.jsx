@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight, Clock, Info } from "lucide-react";
 import Button from "./Button";
 import ServiceModal from "./ServiceModal";
@@ -27,14 +26,12 @@ const ServiceCard = ({
 
   return (
     <>
-      <motion.div
-        whileHover={{ y: -5 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        className="bg-butter p-6 rounded-2xl shadow-md border border-gold/20 hover:shadow-xl hover:border-gold/50 transition-all duration-300 flex flex-col h-full group"
-      >
-        <div className="mb-4">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="text-xl font-serif text-charcoal">{title}</h3>
+      <div className="bg-butter rounded-soft border border-gold/15 hover:border-gold/45 transition-colors duration-500 ease-luxe p-8 flex flex-col h-full">
+        <div className="mb-5">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <h3 className="font-serif font-normal text-2xl leading-snug text-charcoal">
+              {title}
+            </h3>
             {hasExtendedInfo && (
               <button
                 onClick={() => {
@@ -45,40 +42,43 @@ const ServiceCard = ({
                   });
                   setIsModalOpen(true);
                 }}
-                className="p-1.5 rounded-full bg-gold/10 hover:bg-gold/20 transition-colors flex-shrink-0 cursor-pointer"
-                aria-label="View details"
+                className="p-1.5 text-gold/60 hover:text-gold transition-colors flex-shrink-0 cursor-pointer"
+                aria-label={`View details for ${title}`}
                 title="View full details"
               >
-                <Info className="w-4 h-4 text-gold" />
+                <Info className="w-4 h-4" />
               </button>
             )}
           </div>
           {duration && (
-            <div className="flex items-center text-charcoal/60 text-sm mb-3">
-              <Clock className="w-4 h-4 mr-1.5" />
+            <div className="flex items-center text-charcoal/45 text-xs mb-4 numerals">
+              <Clock className="w-3.5 h-3.5 mr-2" aria-hidden="true" />
               <span>{duration}</span>
             </div>
           )}
-          <p className="text-charcoal/80 text-sm leading-relaxed mb-4 line-clamp-3">
+          <p className="text-charcoal/65 text-sm leading-relaxed font-light line-clamp-3">
             {description}
           </p>
         </div>
 
         {benefits && benefits.length > 0 && (
-          <ul className="mb-6 space-y-2 flex-grow">
+          <ul className="mb-8 space-y-2.5 flex-grow">
             {benefits.slice(0, 3).map((benefit, index) => (
               <li
                 key={index}
-                className="flex items-start text-sm text-charcoal/70"
+                className="flex items-start text-sm font-light text-charcoal/60"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold mt-1.5 mr-2 flex-shrink-0" />
+                <span
+                  className="w-1 h-1 rotate-45 bg-gold mt-2 mr-3 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 {benefit}
               </li>
             ))}
           </ul>
         )}
 
-        <div className="mt-auto space-y-3">
+        <div className="mt-auto space-y-5">
           {hasExtendedInfo && (
             <button
               onClick={() => {
@@ -89,34 +89,29 @@ const ServiceCard = ({
                 });
                 setIsModalOpen(true);
               }}
-              className="w-full text-sm text-gold hover:text-gold/80 font-medium flex items-center justify-start gap-2 transition-colors group/link cursor-pointer"
+              className="eyebrow text-gold hover:text-gold-dark flex items-center gap-2 transition-colors group/link cursor-pointer"
             >
               <span>Read More</span>
-              <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform duration-500 ease-luxe" />
             </button>
           )}
 
-          <div className="border-t border-gray-100 pt-4">
-            <div className="flex items-center justify-between gap-4">
-              <span
-                className="text-xl font-serif text-charcoal font-medium flex-shrink-0"
-                style={{ fontVariantNumeric: "lining-nums tabular-nums" }}
-              >
-                {price}
-              </span>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={onBook}
-                data-analytics={`service-card-${title}`}
-                className="px-4 py-2 text-xs whitespace-nowrap"
-              >
-                Book Now
-              </Button>
-            </div>
+          <div className="border-t border-charcoal/10 pt-5 flex items-center justify-between gap-4">
+            <span className="numerals font-serif text-xl text-charcoal flex-shrink-0">
+              {price}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onBook}
+              data-analytics={`service-card-${title}`}
+              className="whitespace-nowrap"
+            >
+              Book
+            </Button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Service Details Modal */}
       {fullService && (

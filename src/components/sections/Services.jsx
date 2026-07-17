@@ -38,11 +38,9 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="scroll-mt-16 py-16 md:py-20 lg:py-24 bg-charcoal relative overflow-hidden"
+      className="scroll-mt-16 py-28 md:py-40 bg-charcoal relative overflow-hidden"
     >
-      {/* Decorative background */}
-      <div className="absolute top-0 left-0 w-1/2 h-full bg-gold/5 rounded-r-full pointer-events-none" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
           title="Curated Treatments"
           subtitle="Our Menu"
@@ -51,27 +49,42 @@ const Services = () => {
         />
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => {
-                analytics.event({
-                  action: "click",
-                  category: "Service Category",
-                  label: category.label,
-                });
-                setActiveCategory(category.id);
-              }}
-              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 cursor-pointer border border-transparent ${
-                activeCategory === category.id
-                  ? "bg-gold text-charcoal shadow-lg scale-105 font-semibold"
-                  : "bg-butter/80 text-charcoal hover:bg-butter hover:border-gold/40 hover:shadow-md hover:-translate-y-0.5"
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
+        <div
+          role="tablist"
+          aria-label="Treatment categories"
+          className="flex flex-wrap justify-center gap-x-8 gap-y-4 md:gap-x-12 mb-12 pb-6 border-b border-white/10"
+        >
+          {categories.map((category) => {
+            const isActive = activeCategory === category.id;
+            return (
+              <button
+                key={category.id}
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => {
+                  analytics.event({
+                    action: "click",
+                    category: "Service Category",
+                    label: category.label,
+                  });
+                  setActiveCategory(category.id);
+                }}
+                className={`eyebrow relative pb-2 transition-colors duration-500 ease-luxe cursor-pointer ${
+                  isActive
+                    ? "text-gold"
+                    : "text-white/45 hover:text-white/80"
+                }`}
+              >
+                {category.label}
+                <span
+                  aria-hidden="true"
+                  className={`absolute bottom-0 left-0 right-0 h-px bg-gold transition-transform duration-500 ease-luxe ${
+                    isActive ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
+              </button>
+            );
+          })}
         </div>
 
         {/* Category Description */}
@@ -82,9 +95,9 @@ const Services = () => {
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             exit={shouldReduceMotion ? undefined : { opacity: 0, y: 10 }}
             transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
-            className="mb-8 md:mb-10 text-center"
+            className="mb-14 text-center"
           >
-            <p className="text-butter/90 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+            <p className="font-serif font-light italic text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               {categoryDescriptions[activeCategory]}
             </p>
           </motion.div>
@@ -95,11 +108,15 @@ const Services = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              exit={shouldReduceMotion ? undefined : { opacity: 0, y: -20 }}
-              transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
+              exit={shouldReduceMotion ? undefined : { opacity: 0, y: -16 }}
+              transition={
+                shouldReduceMotion
+                  ? undefined
+                  : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+              }
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             >
               {servicesData[activeCategory]?.map((service, index) => (
                 <ServiceCard

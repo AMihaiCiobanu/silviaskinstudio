@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import SectionTitle from "../ui/SectionTitle";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -38,56 +38,54 @@ const Products = () => {
   return (
     <section
       id="products"
-      className="py-16 md:py-20 lg:py-24 bg-charcoal border-t border-gold/40"
+      className="py-28 md:py-40 bg-charcoal border-t border-gold/15"
     >
-      <div className="container mx-auto px-4 md:px-6 mb-12">
-        <div className="text-center space-y-3">
-          <p className="text-gold text-xs md:text-sm uppercase tracking-widest font-medium">
-            Extend Your Glow
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white">
+      <div className="container mx-auto px-6 md:px-8">
+        <div className="text-center mb-16 md:mb-20">
+          <p className="eyebrow text-gold mb-5">Extend Your Glow</p>
+          <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]">
             Retail Collection
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
+          <div className="rule-ornament mt-8">
+            <span />
+          </div>
         </div>
-      </div>
 
-      <div className="px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
           {products.map((product, index) => (
-            <div
+            <article
               key={index}
-              className="bg-white/95 backdrop-blur-sm p-4 md:p-6 rounded-2xl text-center group hover:shadow-2xl hover:bg-white hover:scale-105 transition-all duration-300 border-2 border-gold/30 hover:border-gold"
+              className="group rounded-soft border border-white/10 hover:border-gold/40 transition-colors duration-500 ease-luxe p-6 flex flex-col"
             >
-              <div className="aspect-[3/4] bg-butter/30 rounded-lg mb-4 overflow-hidden relative">
+              <div className="aspect-[3/4] bg-butter rounded-soft mb-6 overflow-hidden">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={`${product.name} — Dermalogica skincare available at Silvia Skin Studio`}
                   loading="lazy"
-                  className="object-cover w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover w-full h-full mix-blend-multiply group-hover:scale-[1.04] transition-transform duration-[900ms] ease-luxe"
                 />
               </div>
-              <h4 className="font-serif text-base md:text-lg text-charcoal mb-2">
+              <h3 className="font-serif font-normal text-lg md:text-xl text-white mb-3 leading-snug">
                 {product.name}
-              </h4>
-              <p className="text-xs md:text-sm text-charcoal/80">
+              </h3>
+              <p className="text-xs md:text-sm text-white/50 font-light leading-relaxed flex-grow">
                 {product.description}
               </p>
-              <span className="inline-block mt-3 md:mt-4 text-xs font-bold text-gold uppercase tracking-widest border-b-2 border-gold/50 pb-1">
+              <span className="eyebrow text-gold/70 text-[9px] mt-6">
                 Available In-Store
               </span>
-            </div>
+            </article>
           ))}
         </div>
-      </div>
 
-      <div className="text-center mt-12">
-        <a
-          href="/products"
-          className="inline-block bg-gold text-white px-8 py-3 rounded-full hover:bg-gold/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg hover:shadow-gold/50"
-        >
-          View All Products
-        </a>
+        <div className="text-center mt-16 md:mt-20">
+          <Link
+            to="/products"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-soft border border-white/25 text-white/80 eyebrow text-xs hover:border-gold hover:text-gold transition-colors duration-500 ease-luxe"
+          >
+            View All Products
+          </Link>
+        </div>
       </div>
     </section>
   );

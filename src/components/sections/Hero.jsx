@@ -7,56 +7,87 @@ import Button from "../ui/Button";
 const Hero = () => {
   const shouldReduceMotion = useReducedMotion();
 
+  const reveal = (delay = 0) =>
+    shouldReduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 1.2, delay, ease: [0.22, 1, 0.36, 1] },
+        };
+
   return (
     <section
       id="home"
-      className="scroll-mt-16 relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-charcoal via-charcoal/95 to-gold/20"
+      className="scroll-mt-16 relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gold/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/3 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Warm pool of light behind the title — replaces the old gold blobs */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 50% 40%, rgba(201,169,97,0.16) 0%, rgba(201,169,97,0.05) 35%, transparent 70%)",
+        }}
+      />
 
       {/* Content */}
-      <div className="relative z-20 text-center px-6 py-20 max-w-5xl mx-auto">
-        <motion.div
-          initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }}
-          animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
-          className="space-y-6 md:space-y-8"
-        >
-          <span className="block animate-heartbeat text-gold text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase font-sans font-medium">
-            Welcome to Your Sanctuary
-          </span>
-          <h1 className="title-sweep text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif leading-tight px-4">
-            Silvia Skin Studio
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed px-4">
-            Expert Skin Specialist & Massage Therapy in the UK.
-            <br className="hidden sm:block" />
-            &nbsp;Where advanced aesthetics meet deep relaxation.
-          </p>
+      <div className="relative z-20 text-center px-8 py-28 max-w-4xl mx-auto">
+        <motion.p {...reveal(0.1)} className="eyebrow text-gold/90">
+          Langham &middot; Colchester
+        </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-4 px-4">
-            <Button
-              variant="primary"
-              onClick={() => (window.location.href = "tel:+447427619245")}
-              data-analytics="hero-book"
-              className="w-full sm:w-auto min-w-[200px] py-4 text-base"
-            >
-              Book Appointment
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => {
-                document
-                  .getElementById("services")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="w-full sm:w-auto min-w-[200px] py-4 text-base text-white border-white hover:bg-white hover:text-charcoal hover:border-white"
-            >
-              View Treatments
-            </Button>
-          </div>
+        <motion.h1
+          {...reveal(0.25)}
+          className="mt-8 font-serif font-light text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.02em]"
+        >
+          Silvia Skin Studio
+        </motion.h1>
+
+        <motion.div {...reveal(0.4)} className="rule-ornament mt-10 opacity-70">
+          <span />
+        </motion.div>
+
+        <motion.p
+          {...reveal(0.5)}
+          className="mt-10 font-serif font-light italic text-white/75 text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto"
+        >
+          Advanced skincare and massage therapy in Colchester — where clinical
+          results meet deep quiet.
+        </motion.p>
+
+        <motion.p
+          {...reveal(0.6)}
+          className="mt-8 eyebrow text-white/40 text-[10px]"
+        >
+          Level 5 Qualified Aesthetician
+        </motion.p>
+
+        <motion.div
+          {...reveal(0.75)}
+          className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => (window.location.href = "tel:+447427619245")}
+            data-analytics="hero-book"
+            className="w-full sm:w-auto min-w-[220px]"
+          >
+            Book Appointment
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => {
+              document
+                .getElementById("services")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="w-full sm:w-auto min-w-[220px] text-white/80 border-white/25 hover:text-charcoal hover:border-white"
+          >
+            View Treatments
+          </Button>
         </motion.div>
       </div>
 
@@ -64,11 +95,11 @@ const Hero = () => {
       <motion.div
         initial={shouldReduceMotion ? undefined : { opacity: 0 }}
         animate={shouldReduceMotion ? undefined : { opacity: 1 }}
-        transition={shouldReduceMotion ? undefined : { delay: 1, duration: 1 }}
-        className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+        transition={shouldReduceMotion ? undefined : { delay: 1.4, duration: 1.2 }}
+        className="hidden md:block absolute bottom-14 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent mx-auto" />
-        <span className="text-white/60 text-[10px] uppercase tracking-widest mt-2 block">
+        <div className="w-px h-16 bg-gradient-to-b from-white/50 to-transparent mx-auto" />
+        <span className="eyebrow text-white/35 text-[9px] mt-3 block">
           Scroll
         </span>
       </motion.div>
