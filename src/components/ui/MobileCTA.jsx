@@ -32,7 +32,7 @@ const MobileCTA = () => {
   return (
     <div className="md:hidden fixed inset-x-4 bottom-4 z-40 pointer-events-none">
       <div
-        className={`bg-charcoal text-white rounded-soft border border-gold/30 px-5 py-4 flex items-center justify-between gap-3 transform transition-all duration-700 ease-luxe ${
+        className={`bg-charcoal/95 backdrop-blur-md text-white rounded-soft border border-gold/25 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.55)] px-5 py-4 flex items-center justify-between gap-3 transform transition-all duration-700 ease-luxe ${
           isVisible
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4"

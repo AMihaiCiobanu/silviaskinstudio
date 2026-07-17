@@ -24,9 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Solid header immediately on mobile — avoids transparent bleed while scrolling
-      const threshold = window.matchMedia("(max-width: 767px)").matches ? 1 : 50;
-      setIsScrolled(window.scrollY > threshold);
+      setIsScrolled(window.scrollY > 60);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -76,21 +74,21 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-700 ease-luxe ${headerBgClass}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-1000 ease-luxe ${headerBgClass}`}
     >
       <div className={isMobileMenuOpen ? "max-md:hidden" : ""}>
         <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex flex-col z-50 flex-shrink-0 leading-none">
           <span
-            className={`font-serif font-light text-2xl md:text-[1.75rem] tracking-[0.12em] transition-colors duration-700 ease-luxe ${
+            className={`font-serif font-light text-2xl md:text-[1.75rem] tracking-[0.12em] transition-colors duration-1000 ease-luxe ${
               showSolidHeader ? "text-charcoal" : "text-white"
             }`}
           >
             SILVIA
           </span>
           <span
-            className={`eyebrow text-[9px] mt-1.5 transition-colors duration-700 ease-luxe ${
+            className={`eyebrow text-[9px] mt-1.5 transition-colors duration-1000 ease-luxe ${
               showSolidHeader ? "text-gold" : "text-white/55"
             }`}
           >

@@ -103,11 +103,11 @@ const About = () => {
               </p>
             </div>
 
-            <figure className="mt-12 border-l border-gold/40 pl-8">
-              <p className="eyebrow text-charcoal/40 text-[10px] mb-4">
+            <figure className="mt-12 border-l-2 border-gold/50 bg-gold/[0.06] rounded-r-soft pl-8 pr-7 py-7">
+              <p className="eyebrow text-gold text-[10px] mb-4">
                 My Philosophy
               </p>
-              <blockquote className="font-serif font-light italic text-xl md:text-2xl text-charcoal/75 leading-[1.6]">
+              <blockquote className="font-serif italic text-xl md:text-2xl text-charcoal/90 leading-[1.7]">
                 Great skin starts with understanding it. I believe in a holistic
                 approach that combines advanced technologies with therapeutic
                 touch to deliver visible results and deep relaxation.

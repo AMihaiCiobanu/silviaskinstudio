@@ -97,7 +97,7 @@ const Services = () => {
             transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
             className="mb-14 text-center"
           >
-            <p className="font-serif font-light italic text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-serif italic text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
               {categoryDescriptions[activeCategory]}
             </p>
           </motion.div>
