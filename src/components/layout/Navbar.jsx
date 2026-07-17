@@ -66,16 +66,14 @@ const Navbar = () => {
   const showSolidHeader = !isHomePage || isScrolled || isMobileMenuOpen;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      {/* Blur stays on the header bar only — backdrop-filter on <nav> would
-          clip fixed-position mobile menu children to the header height. */}
-      <div
-        className={`transition-colors duration-700 ease-luxe ${
-          showSolidHeader
-            ? "bg-butter/90 backdrop-blur-md border-b border-charcoal/8"
-            : "bg-transparent border-b border-transparent"
-        } ${isMobileMenuOpen ? "max-md:hidden" : ""}`}
-      >
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-colors duration-700 ease-luxe ${
+        showSolidHeader
+          ? "bg-butter md:bg-butter/90 md:backdrop-blur-md border-b border-charcoal/8"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className={isMobileMenuOpen ? "max-md:hidden" : ""}>
         <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex flex-col z-50 flex-shrink-0 leading-none">
@@ -154,7 +152,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.25 }}
-            className="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-butter z-40 flex flex-col md:hidden overflow-y-auto border-l border-gold/20"
+            className="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-butter z-40 flex flex-col md:hidden overflow-y-auto border-l border-gold/20 pt-[env(safe-area-inset-top,0px)]"
           >
             {/* Mobile Menu Header */}
             <div className="p-7 flex items-center justify-between border-b border-gold/20">
