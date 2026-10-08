@@ -158,3 +158,327 @@ body::before {
     transition: none;
   }
 }
+
+/* Guest book — reviews you leaf through page by page (Reviews section).
+   Ported from the Storybook design in clientsAppointmentsPage. */
+.guestbook {
+  --gb-paper: var(--color-butter-light);
+  --gb-muted: #6f6a61;
+}
+
+.guestbook .book-stage {
+  --pw: min(86vw, 360px);
+  --ph: calc(var(--pw) * 1.36);
+  display: flex;
+  justify-content: center;
+  perspective: 2400px;
+  padding-top: 10px;
+  overflow-x: clip;
+}
+
+.guestbook .book {
+  position: relative;
+  width: var(--pw);
+  height: var(--ph);
+  outline: none;
+  transform-style: preserve-3d;
+  transition: transform 0.9s var(--ease-luxe);
+  touch-action: pan-y;
+}
+
+.guestbook .book:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 16px;
+}
+
+.guestbook .leaf {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.9s var(--ease-luxe), visibility 0s linear 0s;
+  cursor: pointer;
+}
+
+.guestbook .leaf.turned {
+  transform: rotateY(-180deg);
+}
+
+.guestbook .face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--gb-paper);
+  color: var(--color-charcoal);
+  border-radius: 2px 6px 6px 2px;
+  box-shadow: inset 14px 0 24px -14px rgba(0, 0, 0, 0.28);
+}
+
+/* Page curl shading that follows the turn */
+.guestbook .face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent 18%, transparent 86%, rgba(0, 0, 0, 0.05));
+}
+
+.guestbook .face.back {
+  transform: rotateY(180deg);
+  border-radius: 6px 2px 2px 6px;
+  box-shadow: inset -14px 0 24px -14px rgba(0, 0, 0, 0.28);
+}
+
+.guestbook .leaf.on-top .face {
+  box-shadow: inset 14px 0 24px -14px rgba(0, 0, 0, 0.28), 0 18px 40px rgba(28, 27, 25, 0.22);
+}
+
+.guestbook .leaf.on-top .face.back {
+  box-shadow: inset -14px 0 24px -14px rgba(0, 0, 0, 0.28), 0 18px 40px rgba(28, 27, 25, 0.22);
+}
+
+.guestbook .face.back::after {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.08), transparent 18%, transparent 86%, rgba(0, 0, 0, 0.05));
+}
+
+.guestbook .pg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 30px 26px;
+}
+
+.guestbook .pg-plain {
+  background: repeating-linear-gradient(0deg, transparent 0 31px, rgba(169, 139, 74, 0.08) 31px 32px);
+}
+
+.guestbook .pg-folio {
+  margin-top: auto;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gb-muted);
+  font-size: 0.95rem;
+}
+
+.guestbook .pg-cover {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-gold);
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgba(255, 255, 255, 0.06), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0 2px, transparent 2px 6px),
+    #24221f;
+}
+
+.guestbook .pg-cover::before,
+.guestbook .pg-cover::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.guestbook .pg-cover::before {
+  inset: 16px;
+  border: 1px solid rgba(201, 169, 97, 0.55);
+}
+
+.guestbook .pg-cover::after {
+  inset: 22px;
+  border: 1px solid rgba(201, 169, 97, 0.25);
+}
+
+.guestbook .cover-kicker {
+  font-size: 0.66rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.guestbook .cover-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 1;
+  background: linear-gradient(120deg, #a88b4a, #f3dfa8 45%, #a88b4a 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.guestbook .cover-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: rgba(220, 195, 137, 0.7);
+  margin-top: 14px;
+}
+
+.guestbook .cover-hint {
+  position: absolute;
+  bottom: 34px;
+  left: 0;
+  right: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(220, 195, 137, 0.55);
+  animation: gb-hint 2.4s ease-in-out infinite;
+}
+
+@keyframes gb-hint {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.guestbook .pg-intro {
+  justify-content: center;
+  text-align: center;
+}
+
+.guestbook .pg-intro h3 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.guestbook .pg-intro .rule-ornament {
+  margin: 18px 0;
+}
+
+.guestbook .pg-intro p {
+  color: var(--gb-muted);
+  font-size: 0.95rem;
+}
+
+.guestbook .pg-review .stars {
+  color: var(--color-gold-dark);
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+}
+
+.guestbook .pg-review .dropq {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  line-height: 0.6;
+  color: var(--color-gold-light);
+  height: 34px;
+  margin-top: 14px;
+}
+
+.guestbook .pg-review blockquote {
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 4.6vw, 1.5rem);
+  line-height: 1.35;
+}
+
+.guestbook .pg-review blockquote.is-medium {
+  font-size: clamp(1.05rem, 4vw, 1.25rem);
+}
+
+.guestbook .pg-review blockquote.is-long {
+  font-size: clamp(0.95rem, 3.6vw, 1.1rem);
+  line-height: 1.4;
+}
+
+.guestbook .pg-review .by {
+  margin-top: 18px;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.guestbook .pg-back .cover-title {
+  font-size: 2.6rem;
+}
+
+.guestbook .pg-back .rule-ornament {
+  margin: 26px 0 22px;
+}
+
+.guestbook .pg-back .cover-kicker {
+  margin: 0;
+}
+
+.guestbook .book-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.guestbook .round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(168, 139, 74, 0.5);
+  color: var(--color-gold-dark);
+  transition: background 0.4s var(--ease-luxe), color 0.4s var(--ease-luxe);
+}
+
+.guestbook .round:hover:not(:disabled) {
+  background: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+.guestbook .round:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.guestbook .book-count {
+  min-width: 120px;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(28, 27, 25, 0.6);
+}
+
+/* Phone: one page at a time, turned pages leave to the left */
+@media (max-width: 759px) {
+  .guestbook .leaf.turned {
+    visibility: hidden;
+    transition: transform 0.9s var(--ease-luxe), visibility 0s linear 0.9s;
+  }
+}
+
+/* Wide: an open spread; the book slides so a closed cover sits centred */
+@media (min-width: 760px) {
+  .guestbook .book-stage {
+    --pw: min(40vw, 380px);
+    padding-top: 20px;
+  }
+  .guestbook .book {
+    width: calc(var(--pw) * 2);
+  }
+  .guestbook .leaf {
+    left: 50%;
+    width: 50%;
+  }
+  .guestbook .book.is-closed {
+    transform: translateX(-25%);
+  }
+  .guestbook .book.is-done {
+    transform: translateX(25%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guestbook .cover-hint {
+    animation: none;
+  }
+  .guestbook .book,
+  .guestbook .leaf {
+    transition-duration: 0.01s;
+  }
+}
