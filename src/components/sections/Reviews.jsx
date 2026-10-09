@@ -187,14 +187,22 @@ const Reviews = () => {
     }
   };
 
-  const total = wide ? n * 2 : n;
-  const shown = wide ? Math.min(turned * 2, total) : turned + 1;
+  // Count in review numbers, so it matches the folio printed on each page. Page k of the
+  // book (cover = 0, intro = 1) holds review k - 1.
+  const folioAt = (k) => (k >= 2 && k < 2 + reviews.length ? k - 1 : null);
+  const folios = (wide ? [turned * 2 - 1, turned * 2] : [turned])
+    .map(folioAt)
+    .filter(Boolean);
   const count =
     turned === 0
       ? "Cover"
       : turned === lastTurn
         ? "Back cover"
-        : `Page ${Math.min(shown, total)} of ${total}`;
+        : folios.length === 0
+          ? "Introduction"
+          : folios.length === 1
+            ? `Page ${folios[0]} of ${reviews.length}`
+            : `Pages ${folios[0]}–${folios[1]} of ${reviews.length}`;
 
   return (
     <section
