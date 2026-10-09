@@ -184,6 +184,7 @@ body::before {
   transform-style: preserve-3d;
   transition: transform 0.9s var(--ease-luxe);
   touch-action: pan-y;
+  will-change: transform;
 }
 
 .guestbook .book:focus-visible {
@@ -196,12 +197,16 @@ body::before {
   inset: 0;
   transform-origin: left center;
   transform-style: preserve-3d;
+  transform: translateZ(var(--z, 0));
   transition: transform 0.9s var(--ease-luxe), visibility 0s linear 0s;
   cursor: pointer;
+  /* Stay composited between turns, or Safari re-rasterises the text when a turn ends
+     and it visibly jumps. */
+  will-change: transform;
 }
 
 .guestbook .leaf.turned {
-  transform: rotateY(-180deg);
+  transform: translateZ(var(--z, 0)) rotateY(-180deg);
 }
 
 .guestbook .face {
@@ -327,6 +332,12 @@ body::before {
   text-transform: uppercase;
   color: rgba(220, 195, 137, 0.55);
   animation: gb-hint 2.4s ease-in-out infinite;
+}
+
+/* An animated child gets its own layer, which Safari can show through the turned cover. */
+.guestbook .book:not(.is-closed) .cover-hint {
+  animation: none;
+  opacity: 0;
 }
 
 @keyframes gb-hint {

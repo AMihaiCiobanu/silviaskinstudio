@@ -228,7 +228,10 @@ const Reviews = () => {
                 <div
                   key={`${wide ? "w" : "p"}-${i}`}
                   className={`leaf${isTurned ? " turned" : ""}${onTop ? " on-top" : ""}`}
-                  style={{ zIndex: z }}
+                  // Safari sorts preserve-3d layers by depth, not z-index: lift each leaf a
+                  // hair so leaves are never coplanar (coplanar leaves flicker as they turn).
+                  // Stack order only, so a leaf's depth stops changing when its turn ends.
+                  style={{ zIndex: z, "--z": `${(isTurned ? i + 1 : n - i) * 0.5}px` }}
                   aria-hidden="true"
                   onClick={(e) => {
                     if (e.target.closest("[data-no-turn]")) return;
