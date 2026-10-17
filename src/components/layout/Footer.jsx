@@ -112,7 +112,7 @@ const Footer = () => {
             </address>
 
             <div className="mt-10 pt-8 border-t border-white/10">
-              <h5 className="eyebrow text-[10px] text-white/40 mb-4">
+              <h5 className="eyebrow text-[10px] text-white/55 mb-4">
                 Opening Hours
               </h5>
               <dl className="space-y-2 text-sm font-light">
@@ -120,7 +120,7 @@ const Footer = () => {
                   <div key={days} className="flex justify-between gap-4">
                     <dt className="text-white/50">{days}</dt>
                     <dd
-                      className={`numerals ${closed ? "text-white/30" : "text-white/60"}`}
+                      className={`numerals ${closed ? "text-white/50" : "text-white/60"}`}
                     >
                       {closed ? "Closed" : `${opens} – ${closes}`}
                     </dd>
@@ -131,7 +131,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 text-xs text-white/35">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 text-xs text-white/50">
           <p className="text-center md:text-left">
             © 2026 Silvia Skin Studio. All rights reserved.
           </p>
@@ -156,8 +156,7 @@ const Footer = () => {
             href="https://softsapps.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Made by SoftApps"
-            className="inline-flex items-center gap-2 text-xs text-white/50 opacity-90 hover:opacity-100 transition-opacity"
+            className="inline-flex items-center gap-2 text-xs text-white/55 hover:text-white/80 transition-colors"
           >
             <span>Made by</span>
             <svg

@@ -79,7 +79,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                   </h2>
                   <div className="flex flex-wrap items-center gap-6 numerals">
                     {service.duration && (
-                      <div className="flex items-center gap-2 text-charcoal/50 text-xs">
+                      <div className="flex items-center gap-2 text-charcoal/65 text-xs">
                         <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>{service.duration}</span>
                       </div>
@@ -106,7 +106,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                 {service.detailedBenefits &&
                   service.detailedBenefits.length > 0 && (
                     <div className="mb-10">
-                      <h3 className="eyebrow text-charcoal/45 mb-5 flex items-center gap-4">
+                      <h3 className="eyebrow text-charcoal/65 mb-5 flex items-center gap-4">
                         <span className="w-6 h-px bg-gold" aria-hidden="true"></span>
                         Benefits
                       </h3>
@@ -127,7 +127,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                 {/* Recommended For */}
                 {service.recommendedFor && (
                   <div className="mb-10">
-                    <h3 className="eyebrow text-charcoal/45 mb-5 flex items-center gap-4">
+                    <h3 className="eyebrow text-charcoal/65 mb-5 flex items-center gap-4">
                       <span className="w-6 h-px bg-gold" aria-hidden="true"></span>
                       Recommended For
                     </h3>
@@ -140,7 +140,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                 {/* Treatment Frequency */}
                 {service.treatmentFrequency && (
                   <div className="mb-12">
-                    <h3 className="eyebrow text-charcoal/45 mb-5 flex items-center gap-4">
+                    <h3 className="eyebrow text-charcoal/65 mb-5 flex items-center gap-4">
                       <span className="w-6 h-px bg-gold" aria-hidden="true"></span>
                       Treatment Frequency
                     </h3>

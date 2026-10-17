@@ -46,6 +46,8 @@ const About = () => {
             <div className="relative aspect-[3/4] rounded-soft overflow-hidden">
               <img
                 src="/assets/silvia-about.webp"
+                width={974}
+                height={1421}
                 alt="Silvia, Level 5 qualified aesthetician and massage therapist at Silvia Skin Studio, Colchester"
                 loading="lazy"
                 className="object-cover w-full h-full"
@@ -104,7 +106,7 @@ const About = () => {
             </div>
 
             <figure className="mt-12 border-l-2 border-gold/50 bg-gold/[0.06] rounded-r-soft pl-8 pr-7 py-7">
-              <p className="eyebrow text-gold text-[10px] mb-4">
+              <p className="eyebrow text-gold-ink text-[10px] mb-4">
                 My Philosophy
               </p>
               <blockquote className="font-serif italic text-xl md:text-2xl text-charcoal/90 leading-[1.7]">
@@ -116,7 +118,7 @@ const About = () => {
 
             {/* Certifications */}
             <div className="mt-16">
-              <h3 className="eyebrow text-charcoal/50 mb-8 flex items-center">
+              <h3 className="eyebrow text-charcoal/65 mb-8 flex items-center">
                 <span className="w-8 h-px bg-gold mr-4" aria-hidden="true" />
                 Certifications &amp; Qualifications
               </h3>
@@ -157,6 +159,8 @@ const About = () => {
                     <img
                       src={`/assets/certificates/cert${String(i).padStart(5, "0")}.webp`}
                       alt={`Professional qualification certificate ${i} held by Silvia, Silvia Skin Studio`}
+                      width={1358}
+                      height={1920}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-[900ms] ease-luxe"
                     />

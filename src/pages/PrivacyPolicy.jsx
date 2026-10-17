@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gold underline"
+            className="text-gold-ink underline"
           >
             https://policies.google.com/privacy
           </a>
@@ -145,7 +145,7 @@ const PrivacyPolicy = () => {
           practices, please contact us at:{" "}
           <a
             href="mailto:silvia.skinstudio@gmail.com"
-            className="text-gold underline"
+            className="text-gold-ink underline"
           >
             silvia.skinstudio@gmail.com
           </a>

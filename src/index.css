@@ -9,11 +9,14 @@
   --color-gold: #c9a961;
   --color-gold-light: #dcc389;
   --color-gold-dark: #a88b4a;
+  /* Gold dark enough for text on butter/white (4.7:1+ on butter-dark). Plain gold
+     is ~2:1 there, so it stays for ornaments and for text on charcoal. */
+  --color-gold-ink: #79653a;
   --color-charcoal: #1c1b19;
   --color-charcoal-light: #3a3835;
 
-  --font-serif: "Cormorant Garamond", "Playfair Display", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-serif: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
 
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -452,7 +455,7 @@ body::before {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.1rem;
-  color: rgba(28, 27, 25, 0.6);
+  color: rgba(28, 27, 25, 0.7);
 }
 
 /* Phone: one page at a time, turned pages leave to the left */

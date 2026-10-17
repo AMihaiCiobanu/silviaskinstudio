@@ -59,7 +59,7 @@ const CookieBanner = () => {
               cookies for site performance and analytics. Review our{" "}
               <a
                 href="/privacy"
-                className="text-gold underline hover:text-gold/80"
+                className="text-gold-ink underline hover:text-charcoal"
               >
                 Privacy Policy
               </a>

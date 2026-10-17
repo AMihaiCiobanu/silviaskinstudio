@@ -89,7 +89,7 @@ const Navbar = () => {
           </span>
           <span
             className={`eyebrow text-[9px] mt-1.5 transition-colors duration-1000 ease-luxe ${
-              showSolidHeader ? "text-gold" : "text-white/55"
+              showSolidHeader ? "text-gold-ink" : "text-white/55"
             }`}
           >
             Skin Studio
@@ -163,7 +163,7 @@ const Navbar = () => {
                 <div className="font-serif font-light text-2xl tracking-[0.12em] text-charcoal">
                   SILVIA
                 </div>
-                <div className="eyebrow text-[9px] text-gold mt-1.5">
+                <div className="eyebrow text-[9px] text-gold-ink mt-1.5">
                   Skin Studio
                 </div>
               </div>

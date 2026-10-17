@@ -39,7 +39,7 @@ const MobileCTA = () => {
         }`}
       >
         <div className="flex flex-col leading-none">
-          <span className="eyebrow text-[9px] text-gold/70">
+          <span className="eyebrow text-[9px] text-gold/80">
             Silvia Skin Studio
           </span>
           <span className="font-serif font-light text-lg text-white mt-1.5">

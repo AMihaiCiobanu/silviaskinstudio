@@ -72,7 +72,7 @@ const Services = () => {
                 className={`eyebrow relative pb-2 transition-colors duration-500 ease-luxe cursor-pointer ${
                   isActive
                     ? "text-gold"
-                    : "text-white/45 hover:text-white/80"
+                    : "text-white/55 hover:text-white/80"
                 }`}
               >
                 {category.label}

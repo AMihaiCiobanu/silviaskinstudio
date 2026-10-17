@@ -41,7 +41,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="rounded-soft border border-gold/20 p-8 md:p-10">
-              <h3 className="eyebrow text-charcoal/50 mb-8">
+              <h3 className="eyebrow text-charcoal/65 mb-8">
                 Contact Information
               </h3>
 
@@ -54,7 +54,7 @@ const Contact = () => {
                       aria-hidden="true"
                     />
                     <div>
-                      <p className="eyebrow text-charcoal/40 text-[10px] mb-2">
+                      <p className="eyebrow text-charcoal/65 text-[10px] mb-2">
                         {label}
                       </p>
                       <p className="font-serif text-lg text-charcoal/90 leading-snug">
@@ -70,7 +70,7 @@ const Contact = () => {
                         )}
                       </p>
                       {note && (
-                        <p className="text-xs text-charcoal/40 mt-1.5 font-light">
+                        <p className="text-xs text-charcoal/65 mt-1.5 font-light">
                           {note}
                         </p>
                       )}
@@ -80,7 +80,7 @@ const Contact = () => {
                           {...(action.external
                             ? { target: "_blank", rel: "noreferrer" }
                             : {})}
-                          className="eyebrow text-gold text-[10px] mt-3 inline-block hover:text-gold-dark transition-colors"
+                          className="eyebrow text-gold-ink text-[10px] mt-3 inline-block hover:text-charcoal transition-colors"
                         >
                           {action.text}
                         </a>
@@ -98,7 +98,7 @@ const Contact = () => {
                   <div
                     key={days}
                     className={`flex justify-between items-baseline gap-6 pb-3 border-b border-white/10 last:border-0 last:pb-0 ${
-                      closed ? "text-white/35" : "text-white/80"
+                      closed ? "text-white/50" : "text-white/80"
                     }`}
                   >
                     <dt className="font-light">{days}</dt>

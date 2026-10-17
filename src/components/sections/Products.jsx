@@ -9,28 +9,28 @@ const products = [
     description:
       "Dermalogica's #1 selling cleanser globally. Soap-free foaming gel cleanses all skin conditions.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/special-cleansing-gel-pdp.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/special-cleansing-gel-pdp.jpg?width=600",
   },
   {
     name: "Circular Hydration Serum",
     description:
       "Long-lasting serum with Hyaluronic Acid that floods skin with hydration and replenishes from within.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/circular-hydration-serum-pdp.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/circular-hydration-serum-pdp.jpg?width=600",
   },
   {
     name: "Daily Microfoliant",
     description:
       "Iconic exfoliating powder that activates with water to polish skin to perfection for brighter, smoother results.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/Daily_Microfoliant_-_2.6oz_FRONT_1.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/Daily_Microfoliant_-_2.6oz_FRONT_1.jpg?width=600",
   },
   {
     name: "Intensive Moisture Balance",
     description:
       "Ultra-nourishing moisturiser that restores lipid balance to dry skin for optimal barrier performance.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/IntensiveMoistureBalance_Bottle_1.7oz.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/IntensiveMoistureBalance_Bottle_1.7oz.jpg?width=600",
   },
 ];
 
@@ -61,6 +61,8 @@ const Products = () => {
                 <img
                   src={product.image}
                   alt={`${product.name} — Dermalogica skincare available at Silvia Skin Studio`}
+                  width={600}
+                  height={600}
                   loading="lazy"
                   className="object-cover w-full h-full mix-blend-multiply group-hover:scale-[1.04] transition-transform duration-[900ms] ease-luxe"
                 />
@@ -71,7 +73,7 @@ const Products = () => {
               <p className="text-xs md:text-sm text-white/50 font-light leading-relaxed flex-grow">
                 {product.description}
               </p>
-              <span className="eyebrow text-gold/70 text-[9px] mt-6">
+              <span className="eyebrow text-gold/80 text-[9px] mt-6">
                 Available In-Store
               </span>
             </article>

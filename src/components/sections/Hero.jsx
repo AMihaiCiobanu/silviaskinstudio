@@ -16,6 +16,18 @@ const Hero = () => {
           transition: { duration: 1.2, delay, ease: [0.22, 1, 0.36, 1] },
         };
 
+  // The title and tagline are the largest paint on the page: they slide in but
+  // stay opaque, so the browser counts them as painted on the first frame
+  // (an opacity-0 start would push Largest Contentful Paint past the fade).
+  const rise = (delay = 0) =>
+    shouldReduceMotion
+      ? {}
+      : {
+          initial: { y: 24 },
+          animate: { y: 0 },
+          transition: { duration: 1.2, delay, ease: [0.22, 1, 0.36, 1] },
+        };
+
   return (
     <section
       id="home"
@@ -38,7 +50,7 @@ const Hero = () => {
         </motion.p>
 
         <motion.h1
-          {...reveal(0.25)}
+          {...rise(0.25)}
           className="mt-8 font-serif font-light text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.02em]"
         >
           Silvia Skin Studio
@@ -49,7 +61,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.p
-          {...reveal(0.5)}
+          {...rise(0.5)}
           className="mt-10 font-serif font-light italic text-white/75 text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto"
         >
           Advanced skincare and massage therapy in Colchester — where clinical
@@ -58,7 +70,7 @@ const Hero = () => {
 
         <motion.p
           {...reveal(0.6)}
-          className="mt-8 eyebrow text-white/40 text-[10px]"
+          className="mt-8 eyebrow text-white/55 text-[10px]"
         >
           Level 5 Qualified Aesthetician
         </motion.p>
@@ -99,7 +111,7 @@ const Hero = () => {
         className="hidden md:block absolute bottom-14 left-1/2 -translate-x-1/2 z-20"
       >
         <div className="w-px h-16 bg-gradient-to-b from-white/50 to-transparent mx-auto" />
-        <span className="eyebrow text-white/35 text-[9px] mt-3 block">
+        <span className="eyebrow text-white/50 text-[9px] mt-3 block">
           Scroll
         </span>
       </motion.div>

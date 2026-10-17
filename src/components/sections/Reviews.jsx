@@ -211,7 +211,7 @@ const Reviews = () => {
     >
       <div className="container mx-auto px-6 md:px-8">
         <SectionTitle title="The guest book" subtitle="Testimonials" />
-        <p className="-mt-8 md:-mt-12 mb-12 text-center text-charcoal/55">
+        <p className="-mt-8 md:-mt-12 mb-12 text-center text-charcoal/65">
           Turn the pages: tap a page, swipe, or use the arrow keys.
         </p>
 

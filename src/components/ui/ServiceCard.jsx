@@ -51,7 +51,7 @@ const ServiceCard = ({
             )}
           </div>
           {duration && (
-            <div className="flex items-center text-charcoal/45 text-xs mb-4 numerals">
+            <div className="flex items-center text-charcoal/65 text-xs mb-4 numerals">
               <Clock className="w-3.5 h-3.5 mr-2" aria-hidden="true" />
               <span>{duration}</span>
             </div>
@@ -66,7 +66,7 @@ const ServiceCard = ({
             {benefits.slice(0, 3).map((benefit, index) => (
               <li
                 key={index}
-                className="flex items-start text-sm font-light text-charcoal/60"
+                className="flex items-start text-sm font-light text-charcoal/65"
               >
                 <span
                   className="w-1 h-1 rotate-45 bg-gold mt-2 mr-3 flex-shrink-0"
@@ -89,7 +89,7 @@ const ServiceCard = ({
                 });
                 setIsModalOpen(true);
               }}
-              className="eyebrow text-gold hover:text-gold-dark flex items-center gap-2 transition-colors group/link cursor-pointer"
+              className="eyebrow text-gold-ink hover:text-charcoal flex items-center gap-2 transition-colors group/link cursor-pointer"
             >
               <span>Read More</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform duration-500 ease-luxe" />

@@ -19,7 +19,7 @@ const SectionTitle = ({ title, subtitle, centered = true, isDark = false }) => {
   return (
     <div className={`mb-16 md:mb-20 ${centered ? "text-center" : "text-left"}`}>
       {subtitle && (
-        <motion.span {...reveal()} className="eyebrow block text-gold mb-5">
+        <motion.span {...reveal()} className={`eyebrow block mb-5 ${isDark ? "text-gold" : "text-gold-ink"}`}>
           {subtitle}
         </motion.span>
       )}

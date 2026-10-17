@@ -5,7 +5,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import * as analytics from "./utils/analytics";
 
-const Home = lazy(() => import("./pages/Home"));
+// Home is the landing route: imported eagerly so the hero does not wait for a
+// second chunk before the first paint.
+import Home from "./pages/Home";
 const Certificates = lazy(() => import("./pages/Certificates"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Terms = lazy(() => import("./pages/Terms"));
