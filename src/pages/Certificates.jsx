@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { X } from "lucide-react";
 import SectionTitle from "../components/ui/SectionTitle";
 import SEO from "../components/SEO";
@@ -45,7 +45,7 @@ const Certificates = () => {
       <section className="bg-charcoal text-white pt-32 md:pt-40 pb-12 md:pb-16 lg:pb-24">
         <div className="container mx-auto px-4 md:px-6">
           {/* Slides in but stays opaque: the heading is the first paint. */}
-          <motion.div
+          <m.div
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.8 }}
@@ -57,7 +57,7 @@ const Certificates = () => {
               Professional qualifications and certifications in skincare,
               aesthetics, and massage therapy
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -66,9 +66,11 @@ const Certificates = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {certificates.map((cert, index) => (
-              <motion.div
+              // The first row is on screen at load and holds the largest paint:
+              // it slides in but stays opaque. The rest fade in on scroll.
+              <m.div
                 key={cert.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={index < 3 ? { y: 20 } : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -82,7 +84,8 @@ const Certificates = () => {
                     width={cert.width}
                     height={cert.height}
                     loading={index < 3 ? "eager" : "lazy"}
-                    decoding="async"
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    decoding={index === 0 ? "sync" : "async"}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
@@ -91,7 +94,7 @@ const Certificates = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -99,13 +102,13 @@ const Certificates = () => {
 
       {/* Lightbox Modal */}
       {selectedImage && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           onClick={() => setSelectedImage(null)}
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
         >
-          <motion.div
+          <m.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             onClick={(e) => e.stopPropagation()}
@@ -125,8 +128,8 @@ const Certificates = () => {
               height={selectedImage.height}
               className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
             />
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </div>
   );

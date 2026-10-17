@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { X, Clock, Calendar } from "lucide-react";
 import Button from "./Button";
 import { useModalState } from "../ModalProvider";
@@ -43,7 +43,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -53,7 +53,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
 
           {/* Modal */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto pointer-events-none">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 24 }}
@@ -166,7 +166,7 @@ const ServiceModal = ({ isOpen, onClose, service, onBook }) => {
                   </Button>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </>
       )}

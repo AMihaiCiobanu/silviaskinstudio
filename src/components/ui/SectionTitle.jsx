@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 // `as="h1"` on pages whose title is the page heading (sub-pages); sections of
 // the home page keep h2 under the hero h1.
@@ -13,7 +13,7 @@ const SectionTitle = ({
   as = "h2",
 }) => {
   const shouldReduceMotion = useReducedMotion();
-  const Heading = as === "h1" ? motion.h1 : motion.h2;
+  const Heading = as === "h1" ? m.h1 : m.h2;
 
   const reveal = (delay = 0) =>
     shouldReduceMotion
@@ -28,9 +28,9 @@ const SectionTitle = ({
   return (
     <div className={`mb-16 md:mb-20 ${centered ? "text-center" : "text-left"}`}>
       {subtitle && (
-        <motion.span {...reveal()} className={`eyebrow block mb-5 ${isDark ? "text-gold" : "text-gold-ink"}`}>
+        <m.span {...reveal()} className={`eyebrow block mb-5 ${isDark ? "text-gold" : "text-gold-ink"}`}>
           {subtitle}
-        </motion.span>
+        </m.span>
       )}
 
       <Heading
@@ -42,7 +42,7 @@ const SectionTitle = ({
         {title}
       </Heading>
 
-      <motion.div
+      <m.div
         {...reveal(0.2)}
         className={`mt-8 ${centered ? "rule-ornament" : ""}`}
       >
@@ -51,7 +51,7 @@ const SectionTitle = ({
         ) : (
           <span className="block h-px w-16 bg-gold/40" />
         )}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

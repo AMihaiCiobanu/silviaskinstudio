@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import SectionTitle from "../ui/SectionTitle";
 import ServiceCard from "../ui/ServiceCard";
 import { servicesData } from "../../data/services";
@@ -89,7 +89,7 @@ const Services = () => {
 
         {/* Category Description */}
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={`desc-${activeCategory}`}
             initial={shouldReduceMotion ? undefined : { opacity: 0, y: -10 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -100,13 +100,13 @@ const Services = () => {
             <p className="font-serif italic text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
               {categoryDescriptions[activeCategory]}
             </p>
-          </motion.div>
+          </m.div>
         </AnimatePresence>
 
         {/* Services Grid */}
         <div className="min-h-[400px]">
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={activeCategory}
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ const Services = () => {
                   onBook={() => (window.location.href = "tel:+447427619245")}
                 />
               ))}
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
       </div>

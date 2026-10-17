@@ -8,7 +8,9 @@ import * as analytics from "./utils/analytics";
 // Home is the landing route: imported eagerly so the hero does not wait for a
 // second chunk before the first paint.
 import Home from "./pages/Home";
-const Certificates = lazy(() => import("./pages/Certificates"));
+// Certificates too: behind React.lazy, Suspense holds the fallback for ~300 ms
+// before showing the page, which delayed its first image (LCP) on every visit.
+import Certificates from "./pages/Certificates";
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const AllProducts = lazy(() => import("./pages/AllProducts"));

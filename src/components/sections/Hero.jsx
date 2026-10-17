@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import Button from "../ui/Button";
 
 const Hero = () => {
@@ -45,37 +45,37 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-20 text-center px-8 py-28 max-w-4xl mx-auto">
-        <motion.p {...reveal(0.1)} className="eyebrow text-gold/90">
+        <m.p {...reveal(0.1)} className="eyebrow text-gold/90">
           Langham &middot; Colchester
-        </motion.p>
+        </m.p>
 
-        <motion.h1
+        <m.h1
           {...rise(0.25)}
           className="mt-8 font-serif font-light text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.02em]"
         >
           Silvia Skin Studio
-        </motion.h1>
+        </m.h1>
 
-        <motion.div {...reveal(0.4)} className="rule-ornament mt-10 opacity-70">
+        <m.div {...reveal(0.4)} className="rule-ornament mt-10 opacity-70">
           <span />
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           {...rise(0.5)}
           className="mt-10 font-serif font-light italic text-white/75 text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto"
         >
           Advanced skincare and massage therapy in Colchester — where clinical
           results meet deep quiet.
-        </motion.p>
+        </m.p>
 
-        <motion.p
+        <m.p
           {...reveal(0.6)}
           className="mt-8 eyebrow text-white/55 text-[10px]"
         >
           Level 5 Qualified Aesthetician
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           {...reveal(0.75)}
           className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
@@ -100,11 +100,11 @@ const Hero = () => {
           >
             View Treatments
           </Button>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Scroll Indicator - Hidden on mobile */}
-      <motion.div
+      <m.div
         initial={shouldReduceMotion ? undefined : { opacity: 0 }}
         animate={shouldReduceMotion ? undefined : { opacity: 1 }}
         transition={shouldReduceMotion ? undefined : { delay: 1.4, duration: 1.2 }}
@@ -114,7 +114,7 @@ const Hero = () => {
         <span className="eyebrow text-white/50 text-[9px] mt-3 block">
           Scroll
         </span>
-      </motion.div>
+      </m.div>
     </section>
   );
 };

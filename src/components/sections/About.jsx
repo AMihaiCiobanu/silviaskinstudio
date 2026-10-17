@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
@@ -32,7 +32,7 @@ const About = () => {
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Image Side */}
-          <motion.div
+          <m.div
             initial={shouldReduceMotion ? undefined : { opacity: 0, y: 32 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -62,10 +62,10 @@ const About = () => {
                 Years of Experience
               </p>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Content Side */}
-          <motion.div
+          <m.div
             initial={shouldReduceMotion ? undefined : { opacity: 0, y: 32 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -126,7 +126,7 @@ const About = () => {
               {/* Certificate Images Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
                 {[1, 2, 3, 4].map((i, index) => (
-                  <motion.button
+                  <m.button
                     key={i}
                     type="button"
                     aria-label={`View certificate ${i} full size`}
@@ -165,7 +165,7 @@ const About = () => {
                       className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-[900ms] ease-luxe"
                     />
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/15 transition-colors duration-500" />
-                  </motion.button>
+                  </m.button>
                 ))}
               </div>
 
@@ -176,21 +176,21 @@ const About = () => {
                 See All Certificates
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 bg-charcoal/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
-            <motion.div
+            <m.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
@@ -209,8 +209,8 @@ const About = () => {
                 alt={selectedImage.alt}
                 className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-soft"
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </section>
