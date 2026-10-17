@@ -1,11 +1,39 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { m, useReducedMotion } from "framer-motion";
 import Button from "../ui/Button";
+import SerumDrops from "../ui/SerumDrops";
+
+// Start the WebGL drops only once the page has loaded and gone idle, so the
+// shader never competes with the title for first paint.
+const useAfterLoadIdle = () => {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let idleId;
+    let timer;
+    const go = () => {
+      timer = setTimeout(() => {
+        idleId = (window.requestIdleCallback || ((cb) => setTimeout(cb, 1)))(
+          () => setReady(true),
+          { timeout: 2000 },
+        );
+      }, 600);
+    };
+    if (document.readyState === "complete") go();
+    else window.addEventListener("load", go, { once: true });
+    return () => {
+      window.removeEventListener("load", go);
+      clearTimeout(timer);
+      if (idleId && window.cancelIdleCallback) window.cancelIdleCallback(idleId);
+    };
+  }, []);
+  return ready;
+};
 
 const Hero = () => {
   const shouldReduceMotion = useReducedMotion();
+  const showDrops = useAfterLoadIdle();
 
   const reveal = (delay = 0) =>
     shouldReduceMotion
@@ -40,6 +68,19 @@ const Hero = () => {
         style={{
           background:
             "radial-gradient(120% 80% at 50% 40%, rgba(201,169,97,0.16) 0%, rgba(201,169,97,0.05) 35%, transparent 70%)",
+        }}
+      />
+
+      {/* Liquid-gold serum drops (WebGL), with a dark scrim keeping the title legible */}
+      {showDrops && (
+        <SerumDrops className="absolute inset-0 w-full h-full pointer-events-none" />
+      )}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none z-10"
+        style={{
+          background:
+            "radial-gradient(60% 45% at 50% 50%, rgba(28,27,25,0.55) 0%, rgba(28,27,25,0.25) 60%, transparent 100%)",
         }}
       />
 
