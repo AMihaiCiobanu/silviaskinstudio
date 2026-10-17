@@ -157,10 +157,10 @@ const About = () => {
                     }`}
                   >
                     <img
-                      src={`/assets/certificates/cert${String(i).padStart(5, "0")}.webp`}
+                      src={`/assets/certificates/thumbs/cert${String(i).padStart(5, "0")}.webp`}
                       alt={`Professional qualification certificate ${i} held by Silvia, Silvia Skin Studio`}
-                      width={1358}
-                      height={1920}
+                      width={566}
+                      height={800}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-[900ms] ease-luxe"
                     />

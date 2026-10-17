@@ -11,7 +11,12 @@ const PrivacyPolicy = () => {
         title="Silvia Skin Studio | Privacy Policy"
         description="Read Silvia Skin Studio's privacy policy to learn how we collect, use, and protect your personal data and cookie preferences."
       />
-      <SectionTitle title="Privacy Policy" subtitle="Legal" centered={false} />
+      <SectionTitle
+        title="Privacy Policy"
+        subtitle="Legal"
+        centered={false}
+        as="h1"
+      />
       <div className="prose prose-stone max-w-none text-charcoal/80">
         <p>Last updated: February 2026</p>
         <h3>1. Introduction</h3>

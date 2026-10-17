@@ -23,11 +23,16 @@ const Certificates = () => {
     }
   }, [selectedImage, setHasModalOpen]);
 
-  // Generate certificate array from cert00001.webp to cert00014.webp
+  // Generate certificate array from cert00001.webp to cert00014.webp.
+  // Scans are 1358×1920; these five are landscape (1920×1358).
+  const landscape = new Set([5, 7, 8, 9, 13]);
   const certificates = Array.from({ length: 14 }, (_, i) => ({
     id: i + 1,
     src: `/assets/certificates/cert${String(i + 1).padStart(5, "0")}.webp`,
+    thumb: `/assets/certificates/thumbs/cert${String(i + 1).padStart(5, "0")}.webp`,
     alt: `Certificate ${i + 1}`,
+    width: landscape.has(i + 1) ? 800 : 566,
+    height: landscape.has(i + 1) ? 566 : 800,
   }));
 
   return (
@@ -39,9 +44,10 @@ const Certificates = () => {
       {/* Header */}
       <section className="bg-charcoal text-white pt-32 md:pt-40 pb-12 md:pb-16 lg:pb-24">
         <div className="container mx-auto px-4 md:px-6">
+          {/* Slides in but stays opaque: the heading is the first paint. */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gold mb-4">
@@ -71,9 +77,12 @@ const Certificates = () => {
               >
                 <div className="relative overflow-hidden rounded-lg shadow-lg h-[400px]">
                   <img
-                    src={cert.src}
+                    src={cert.thumb}
                     alt={cert.alt}
-                    loading={index < 6 ? "eager" : "lazy"}
+                    width={cert.width}
+                    height={cert.height}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
@@ -104,6 +113,7 @@ const Certificates = () => {
           >
             <button
               onClick={() => setSelectedImage(null)}
+              aria-label="Close certificate viewer"
               className="absolute -top-12 right-0 text-white hover:text-gold transition-colors z-10"
             >
               <X size={32} />
@@ -111,6 +121,8 @@ const Certificates = () => {
             <img
               src={selectedImage.src}
               alt={selectedImage.alt}
+              width={selectedImage.width}
+              height={selectedImage.height}
               className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
             />
           </motion.div>

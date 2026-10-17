@@ -3,8 +3,17 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-const SectionTitle = ({ title, subtitle, centered = true, isDark = false }) => {
+// `as="h1"` on pages whose title is the page heading (sub-pages); sections of
+// the home page keep h2 under the hero h1.
+const SectionTitle = ({
+  title,
+  subtitle,
+  centered = true,
+  isDark = false,
+  as = "h2",
+}) => {
   const shouldReduceMotion = useReducedMotion();
+  const Heading = as === "h1" ? motion.h1 : motion.h2;
 
   const reveal = (delay = 0) =>
     shouldReduceMotion
@@ -24,14 +33,14 @@ const SectionTitle = ({ title, subtitle, centered = true, isDark = false }) => {
         </motion.span>
       )}
 
-      <motion.h2
+      <Heading
         {...reveal(0.1)}
         className={`font-serif font-light text-4xl md:text-5xl lg:text-6xl leading-[1.1] ${
           isDark ? "text-white" : "text-charcoal"
         } ${centered ? "max-w-3xl mx-auto" : "max-w-2xl"}`}
       >
         {title}
-      </motion.h2>
+      </Heading>
 
       <motion.div
         {...reveal(0.2)}

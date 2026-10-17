@@ -11,7 +11,7 @@ const allProducts = [
     size: "150ml",
     description:
       "Deep-cleansing oil that melts away make-up, impurities, and waterproof products. Perfect first step in the Double Cleanse routine.",
-    image: "https://www.dermalogica.co.uk/cdn/shop/files/Precleanse_5.jpg",
+    image: "https://www.dermalogica.co.uk/cdn/shop/files/Precleanse_5.jpg?width=600",
     category: "Cleanser",
   },
   {
@@ -20,7 +20,7 @@ const allProducts = [
     description:
       "Dermalogica's #1 selling cleanser globally. Soap-free foaming gel cleanses all skin conditions without disturbing natural moisture balance.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/special-cleansing-gel-pdp.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/special-cleansing-gel-pdp.jpg?width=600",
     category: "Cleanser",
   },
   {
@@ -29,7 +29,7 @@ const allProducts = [
     description:
       "Iconic exfoliating powder activates with water to polish skin to perfection. Contains Rice Enzymes and Salicylic Acid for brighter, smoother skin.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/Daily_Microfoliant_-_2.6oz_FRONT_1.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/Daily_Microfoliant_-_2.6oz_FRONT_1.jpg?width=600",
     category: "Exfoliant",
   },
   {
@@ -38,7 +38,7 @@ const allProducts = [
     description:
       "Long-lasting serum with enhanced Hyaluronic Acid floods skin with hydration, replenishes from within, and helps prevent future moisture loss.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/circular-hydration-serum-pdp.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/circular-hydration-serum-pdp.jpg?width=600",
     category: "Serum",
   },
   {
@@ -47,7 +47,7 @@ const allProducts = [
     description:
       "Dual-phase serum restores younger-looking skin by reducing premature ageing signs. Features Sapphire-bound peptides and Phyto-Nature technology.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/Phyto_Nature_Firming_Serum_pdp.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/Phyto_Nature_Firming_Serum_pdp.jpg?width=600",
     category: "Serum",
   },
   {
@@ -56,7 +56,7 @@ const allProducts = [
     description:
       "Ultra-nourishing moisturiser restores lipid balance to dry, depleted skin. Contains BioReplenish Complex for optimal barrier performance.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/IntensiveMoistureBalance_Bottle_1.7oz.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/IntensiveMoistureBalance_Bottle_1.7oz.jpg?width=600",
     category: "Moisturiser",
   },
   {
@@ -65,7 +65,7 @@ const allProducts = [
     description:
       "Daily firming and lifting liquid moisturiser with oxygen-optimising phytoactives. Clinically proven to give 4 years back in appearance.",
     image:
-      "https://www.dermalogica.co.uk/cdn/shop/files/phyto-nature-oxygen-cream-pdp.jpg",
+      "https://www.dermalogica.co.uk/cdn/shop/files/phyto-nature-oxygen-cream-pdp.jpg?width=600",
     category: "Moisturiser",
   },
 ];
@@ -83,6 +83,7 @@ const AllProducts = () => {
           <SectionTitle
             title="Complete Product Collection"
             subtitle="Professional Skincare"
+            as="h1"
           />
           <p className="text-center text-charcoal/70 max-w-2xl mx-auto mt-6">
             Discover our complete range of Dermalogica professional skincare
@@ -113,23 +114,26 @@ const AllProducts = () => {
                   <img
                     src={product.image}
                     alt={product.name}
+                    width={600}
+                    height={600}
                     loading="lazy"
+                    decoding="async"
                     className="object-cover w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-3 right-3 bg-gold text-white text-xs px-3 py-1 rounded-full font-medium">
+                  <span className="absolute top-3 right-3 bg-charcoal text-white text-xs px-3 py-1 rounded-full font-medium">
                     {product.category}
                   </span>
                 </div>
                 <h4 className="font-serif text-base md:text-lg text-charcoal mb-1">
                   {product.name}
                 </h4>
-                <p className="text-xs text-gold font-medium mb-2">
+                <p className="text-xs text-gold-ink font-medium mb-2">
                   {product.size}
                 </p>
                 <p className="text-xs md:text-sm text-charcoal/70 leading-relaxed">
                   {product.description}
                 </p>
-                <span className="inline-block mt-3 md:mt-4 text-xs font-bold text-gold uppercase tracking-widest border-b border-gold/30 pb-1">
+                <span className="inline-block mt-3 md:mt-4 text-xs font-bold text-gold-ink uppercase tracking-widest border-b border-gold/30 pb-1">
                   Available In-Store
                 </span>
               </div>
@@ -150,7 +154,7 @@ const AllProducts = () => {
           </p>
           <a
             href="tel:+447427619245"
-            className="inline-block bg-gold text-white px-8 py-3 rounded-full hover:bg-gold/90 transition-colors duration-300 font-medium"
+            className="inline-block bg-gold text-charcoal px-8 py-3 rounded-full hover:bg-gold/90 transition-colors duration-300 font-medium"
           >
             Book Consultation
           </a>

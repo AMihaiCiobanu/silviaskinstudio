@@ -15,6 +15,7 @@ const Terms = () => {
         title="Terms & Conditions"
         subtitle="Legal"
         centered={false}
+        as="h1"
       />
       <div className="prose prose-stone max-w-none text-charcoal/80">
         <p>Last updated: February 2026</p>

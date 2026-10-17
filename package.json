@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize-images": "node scripts/optimize-images.js",
-    "generate-og": "node scripts/generate-og-image.mjs"
+    "generate-og": "node scripts/generate-og-image.mjs",
+    "thumbs": "node scripts/make-thumbs.mjs"
   },
   "dependencies": {
     "@fontsource-variable/cormorant-garamond": "^5.3.0",
