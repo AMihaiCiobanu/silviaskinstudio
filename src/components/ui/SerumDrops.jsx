@@ -46,22 +46,31 @@ void main() {
   vec3 ro = vec3(0.0, 0.0, 4.0);
   vec3 rd = normalize(vec3(uv, -1.6));
 
+  // March, remembering where the ray came closest to a drop: rays that just
+  // miss the silhouette still get partial coverage, which anti-aliases the
+  // edge instead of a hard hit/miss step.
   float t = 0.0;
   float minD = 10.0;
+  float tMin = 0.0;
   bool hit = false;
-  for (int i = 0; i < 56; i++) {
+  for (int i = 0; i < 64; i++) {
     float d = map(ro + rd * t);
-    minD = min(minD, d);
-    if (d < 0.002) { hit = true; break; }
+    if (d < minD) { minD = d; tMin = t; }
+    if (d < 0.001) { hit = true; break; }
     t += d;
     if (t > 8.0) break;
   }
 
   vec3 gold = vec3(0.79, 0.66, 0.38);
-  vec4 col = vec4(gold * exp(-minD * 5.0) * 0.18, exp(-minD * 5.0) * 0.18);
+  float g = exp(-minD * 5.0) * 0.18;
+  vec4 col = vec4(gold * g * g, g);
 
-  if (hit) {
-    vec3 p = ro + rd * t;
+  // World-space size of one pixel at the closest-approach distance.
+  float px = tMin / (1.6 * min(uRes.x, uRes.y));
+  float cover = hit ? 1.0 : 1.0 - smoothstep(0.0, px * 1.5, minD);
+
+  if (cover > 0.0) {
+    vec3 p = ro + rd * (hit ? t : tMin);
     vec3 n = normalAt(p);
     vec3 v = -rd;
     vec3 l = normalize(vec3(-0.5, 0.8, 0.6));
@@ -71,14 +80,12 @@ void main() {
     vec3 r = reflect(rd, n);
     vec3 env = mix(vec3(0.11, 0.1, 0.09), vec3(1.0, 0.92, 0.75), smoothstep(-0.2, 0.9, r.y));
     vec3 c = gold * (0.12 + 0.5 * diff) + env * gold * 0.45 + spec * vec3(1.0, 0.96, 0.88) + fres * gold * 0.8;
-    col = vec4(c, 1.0);
+    col = mix(col, vec4(min(c, vec3(1.0)), 1.0), cover);
   }
 
   // Dim whatever drifts behind the title so the text always reads first.
-  float centre = smoothstep(0.12, 0.7, length(uv * vec2(0.75, 1.3)));
-  col *= mix(0.4, 1.0, centre);
-
-  gl_FragColor = vec4(col.rgb * col.a, col.a);
+  float centre = mix(0.4, 1.0, smoothstep(0.12, 0.7, length(uv * vec2(0.75, 1.3))));
+  gl_FragColor = vec4(col.rgb * centre * centre, col.a * centre);
 }
 `;
 
@@ -132,7 +139,7 @@ const SerumDrops = ({ className = "" }) => {
       const w = canvas.clientWidth;
       const h = canvas.clientHeight;
       const scale = Math.min(window.devicePixelRatio || 1, 1.5) * 0.75;
-      const k = Math.min(scale, Math.sqrt(500000 / Math.max(w * h, 1)));
+      const k = Math.min(scale, Math.sqrt(1100000 / Math.max(w * h, 1)));
       canvas.width = Math.round(w * k);
       canvas.height = Math.round(h * k);
       gl.viewport(0, 0, canvas.width, canvas.height);
