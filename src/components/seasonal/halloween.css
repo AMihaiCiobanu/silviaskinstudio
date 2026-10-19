@@ -1,0 +1,51 @@
+/* Halloween decor for the hero (ported from NailsByClemi, without the
+   scarecrow and its sounds). Loaded only in season, with Halloween.jsx. */
+
+.hw-layer { position: absolute; inset: 0; overflow: hidden; pointer-events: none; animation: hw-fade 1.6s ease-out both; }
+.hw-web { position: absolute; top: 84px; left: 0; width: 120px; height: 120px; color: #f8f6f1; opacity: 0.22; }
+.hw-web.right { left: auto; right: 0; transform: scaleX(-1); }
+.hw-pumpkin { position: absolute; right: 16px; bottom: 20px; width: 64px; height: auto; filter: drop-shadow(0 0 16px rgba(255, 122, 26, 0.5)); animation: hw-glow 4s ease-in-out infinite; }
+.hw-bat { position: absolute; top: 14%; left: -60px; width: 40px; height: auto; color: #a88b4a; fill: currentColor; opacity: 0.8; animation: hw-fly 14s linear infinite; }
+.hw-bat:nth-of-type(2) { top: 26%; width: 30px; animation-duration: 19s; animation-delay: -6s; }
+.hw-bat:nth-of-type(3) { top: 62%; width: 36px; animation-duration: 16s; animation-delay: -11s; }
+.hw-bat .wing { transform-box: fill-box; transform-origin: center bottom; animation: hw-flap 0.35s ease-in-out infinite alternate; }
+
+@keyframes hw-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hw-fly {
+  from { transform: translate(0, 0); }
+  50% { transform: translate(55vw, 30px); }
+  to { transform: translate(115vw, -10px); }
+}
+@keyframes hw-flap { from { transform: scaleY(1); } to { transform: scaleY(0.45); } }
+@keyframes hw-glow {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(255, 122, 26, 0.5)); }
+  48% { filter: drop-shadow(0 0 6px rgba(255, 122, 26, 0.25)); }
+  52% { filter: drop-shadow(0 0 22px rgba(255, 122, 26, 0.7)); }
+}
+
+/* Spiders wander inside the hero only */
+.hw-spider { position: absolute; top: 0; left: 0; width: 60px; height: 60px; margin: -30px 0 0 -30px; will-change: transform; }
+.hw-spider svg { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 6px rgba(201, 169, 97, 0.35)) drop-shadow(3px 8px 4px rgba(0, 0, 0, 0.6)); }
+.hw-leg { transform-box: view-box; }
+.walking .hw-leg { animation: hw-leg 0.2s ease-in-out infinite alternate; }
+.walking .hw-leg.b { animation-delay: -0.2s; animation-direction: alternate-reverse; }
+@keyframes hw-leg { from { transform: rotate(-11deg); } to { transform: rotate(11deg); } }
+
+.hw-dangler { position: absolute; top: -520px; width: 60px; height: 520px; }
+.hw-thread { position: absolute; left: 30px; top: 0; width: 1px; height: 496px; background: linear-gradient(#6f5d35, #dcc389); opacity: 0.6; }
+.hw-dangler .hw-spider { top: 496px; left: 30px; transform: rotate(3.1416rad); }
+
+@media (min-width: 768px) {
+  .hw-spider { width: 80px; height: 80px; margin: -40px 0 0 -40px; }
+  .hw-dangler { width: 80px; }
+  .hw-thread { left: 40px; }
+  .hw-dangler .hw-spider { left: 40px; }
+  .hw-web { width: 170px; height: 170px; top: 96px; }
+  .hw-pumpkin { width: 90px; right: 32px; bottom: 32px; }
+  .hw-bat { width: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-layer, .hw-pumpkin, .hw-bat .wing { animation: none; }
+  .hw-bat { display: none; }
+}

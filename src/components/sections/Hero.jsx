@@ -1,9 +1,13 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { m, useReducedMotion } from "framer-motion";
 import Button from "../ui/Button";
 import SerumDrops from "../ui/SerumDrops";
+// HALLOWEEN:start
+import { isHalloween } from "../seasonal/season";
+const Halloween = lazy(() => import("../seasonal/Halloween"));
+// HALLOWEEN:end
 
 // Start the WebGL drops only once the page has loaded and gone idle, so the
 // shader never competes with the title for first paint.
@@ -72,8 +76,16 @@ const Hero = () => {
       />
 
       {/* Liquid-gold serum drops (WebGL), with a dark scrim keeping the title legible */}
-      {showDrops && (
-        <SerumDrops className="absolute inset-0 w-full h-full pointer-events-none" />
+      {/* HALLOWEEN:start */}
+      {showDrops && isHalloween() ? (
+        <Suspense fallback={null}>
+          <Halloween />
+        </Suspense>
+      ) : (
+        /* HALLOWEEN:end */
+        showDrops && (
+          <SerumDrops className="absolute inset-0 w-full h-full pointer-events-none" />
+        )
       )}
       <div
         aria-hidden="true"
