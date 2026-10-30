@@ -132,7 +132,8 @@ const PrivacyPolicy = () => {
         <ul>
           <li>
             Google Analytics: only if you accept cookies, Google receives the
-            Usage Data and Technical Data described above.
+            Usage Data and Technical Data described above. We keep this data in
+            Google Analytics for 14 months.
           </li>
           <li>
             Google Maps: the map in our contact section is provided by Google.
