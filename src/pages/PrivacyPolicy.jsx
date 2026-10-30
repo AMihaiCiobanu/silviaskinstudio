@@ -3,6 +3,7 @@
 import React from "react";
 import SectionTitle from "../components/ui/SectionTitle";
 import SEO from "../components/SEO";
+import { studio } from "../data/studio";
 
 const PrivacyPolicy = () => {
   return (
@@ -18,7 +19,7 @@ const PrivacyPolicy = () => {
         as="h1"
       />
       <div className="prose prose-stone max-w-none text-charcoal/80">
-        <p>Last updated: February 2026</p>
+        <p>Last updated: October 2026</p>
         <h3>1. Introduction</h3>
         <p>
           Silvia Skin Studio ("we", "our", or "us") respects your privacy and is
@@ -26,6 +27,10 @@ const PrivacyPolicy = () => {
           inform you as to how we look after your personal data when you visit
           our website (regardless of where you visit it from) and tell you about
           your privacy rights and how the law protects you.
+        </p>
+        <p>
+          Silvia Skin Studio is the data controller responsible for your
+          personal data. Our contact details are in section 7.
         </p>
 
         <h3>2. Data We Collect</h3>
@@ -117,12 +122,31 @@ const PrivacyPolicy = () => {
             Where we need to comply with a legal or regulatory obligation.
           </li>
           <li>
-            To improve our website and services through analytics and
-            understanding user behavior.
+            With your consent, to improve our website and services through
+            analytics and understanding user behavior.
           </li>
         </ul>
 
-        <h3>5. Your Rights</h3>
+        <h3>5. Third-Party Services</h3>
+        <p>Our website uses the following third-party services:</p>
+        <ul>
+          <li>
+            Google Analytics: only if you accept cookies, Google receives the
+            Usage Data and Technical Data described above.
+          </li>
+          <li>
+            Google Maps: the map in our contact section is provided by Google.
+            When it loads, Google may receive Technical Data such as your IP
+            address and may set its own cookies.
+          </li>
+          <li>
+            Instagram: if you contact us through Instagram, your messages are
+            also subject to Instagram's own privacy policy.
+          </li>
+        </ul>
+        <p>These providers may process your data outside the UK.</p>
+
+        <h3>6. Your Rights</h3>
         <p>Under data protection law, you have rights including:</p>
         <ul>
           <li>
@@ -138,23 +162,62 @@ const PrivacyPolicy = () => {
             personal information in certain circumstances.
           </li>
           <li>
+            Your right to restriction of processing - You have the right to ask
+            us to restrict the processing of your personal information in
+            certain circumstances.
+          </li>
+          <li>
+            Your right to object to processing - You have the right to object to
+            the processing of your personal information in certain
+            circumstances.
+          </li>
+          <li>
+            Your right to data portability - You have the right to ask that we
+            transfer the personal information you gave us to another
+            organisation, or to you, in certain circumstances.
+          </li>
+          <li>
             Your right to withdraw consent - When we rely on consent to process
             your personal data, you have the right to withdraw your consent at
             any time.
           </li>
         </ul>
-
-        <h3>6. Contact Us</h3>
         <p>
-          If you have any questions about this privacy policy or our privacy
-          practices, please contact us at:{" "}
+          You also have the right to complain to the Information Commissioner's
+          Office (ICO), the UK data protection regulator:{" "}
           <a
-            href="mailto:silvia.skinstudio@gmail.com"
+            href="https://ico.org.uk/make-a-complaint/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gold-ink underline"
           >
-            silvia.skinstudio@gmail.com
+            https://ico.org.uk/make-a-complaint/
           </a>
         </p>
+
+        <h3>7. Contact Us</h3>
+        <p>
+          If you have any questions about this privacy policy or our privacy
+          practices, please contact us:
+        </p>
+        <ul>
+          <li>
+            Email:{" "}
+            <a
+              href={`mailto:${studio.email}`}
+              className="text-gold-ink underline"
+            >
+              {studio.email}
+            </a>
+          </li>
+          <li>
+            Phone:{" "}
+            <a href={`tel:${studio.phone}`} className="text-gold-ink underline">
+              {studio.phoneDisplay}
+            </a>
+          </li>
+          <li>Address: {studio.addressLine}</li>
+        </ul>
       </div>
     </div>
   );
