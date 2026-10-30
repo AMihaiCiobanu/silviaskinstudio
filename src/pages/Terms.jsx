@@ -47,13 +47,6 @@ const Terms = () => {
           Gift certificates are valid for 12 months from the date of purchase
           and are non-refundable.
         </p>
-
-        <p>
-          <em>
-            Note: This is a placeholder document. Please consult with a legal
-            professional.
-          </em>
-        </p>
       </div>
     </div>
   );
