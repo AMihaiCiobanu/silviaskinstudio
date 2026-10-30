@@ -155,13 +155,6 @@ const PrivacyPolicy = () => {
             silvia.skinstudio@gmail.com
           </a>
         </p>
-
-        <p>
-          <em>
-            Note: This is a basic policy template. Please consult with a legal
-            professional to ensure full GDPR compliance.
-          </em>
-        </p>
       </div>
     </div>
   );
