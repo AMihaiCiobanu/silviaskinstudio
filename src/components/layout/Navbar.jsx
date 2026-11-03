@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { Menu, X, Phone, Instagram } from "lucide-react";
 import { m, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
+import { studio, openBooking } from "../../data/studio";
 import { event as analyticsEvent } from "../../utils/analytics";
 
 const navLinks = [
@@ -113,7 +114,7 @@ const Navbar = () => {
           <Button
             variant={!isHomePage || isScrolled ? "primary" : "outline"}
             size="sm"
-            onClick={() => (window.location.href = "tel:+447427619245")}
+            onClick={openBooking}
             data-analytics="navbar-book-desktop"
             className={
               !isHomePage || isScrolled
@@ -193,7 +194,7 @@ const Navbar = () => {
             {/* Mobile Menu Footer */}
             <div className="border-t border-gold/20 p-7 space-y-5">
               <Button
-                onClick={() => (window.location.href = "tel:+447427619245")}
+                onClick={openBooking}
                 data-analytics="navbar-book-mobile"
                 className="w-full"
               >
@@ -214,7 +215,7 @@ const Navbar = () => {
                   <Phone size={16} />
                 </a>
                 <a
-                  href="https://instagram.com/silviaskinstudio"
+                  href={studio.instagram}
                   target="_blank"
                   rel="noreferrer"
                   onClick={() =>

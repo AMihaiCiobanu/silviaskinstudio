@@ -4,6 +4,7 @@ import React from "react";
 import SectionTitle from "../components/ui/SectionTitle";
 import { event as analyticsEvent } from "../utils/analytics";
 import SEO from "../components/SEO";
+import { studio } from "../data/studio";
 
 const allProducts = [
   {
@@ -153,7 +154,9 @@ const AllProducts = () => {
             perfect products for your unique skin needs.
           </p>
           <a
-            href="tel:+447427619245"
+            href={studio.bookingUrl}
+            target="_blank"
+            rel="noreferrer"
             className="inline-block bg-gold text-charcoal px-8 py-3 rounded-full hover:bg-gold/90 transition-colors duration-300 font-medium"
           >
             Book Consultation

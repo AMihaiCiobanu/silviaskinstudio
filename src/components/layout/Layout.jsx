@@ -24,7 +24,7 @@ const localBusinessJsonLd = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      dayOfWeek: ["Monday", "Wednesday"],
       opens: "09:30",
       closes: "19:00",
     },

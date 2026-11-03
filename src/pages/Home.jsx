@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <SEO
         title="Silvia Skin Studio | Advanced Facials & Massage Therapy in Colchester"
-        description="Silvia Skin Studio offers expert facials, skin treatments, and massage therapy in Colchester, UK. Level 5 Aesthetician providing personalised, results-driven treatments."
+        description="Silvia Skin Studio offers expert facials, skin treatments, and massage therapy in Colchester, UK. Level 7 Aesthetician providing personalised, results-driven treatments."
       />
       <Hero />
       <About />

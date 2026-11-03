@@ -20,6 +20,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-16 md:mb-20">
           {/* Brand Info */}
           <div className="space-y-8">
+            <img
+              src="/assets/logo-320.webp"
+              srcSet="/assets/logo-160.webp 160w, /assets/logo-320.webp 320w"
+              sizes="112px"
+              width={112}
+              height={112}
+              alt=""
+              loading="lazy"
+              className="w-28 h-28 brightness-0 invert opacity-80"
+            />
             <div className="leading-none">
               <h3 className="font-serif font-light text-3xl tracking-[0.12em] text-white">
                 SILVIA

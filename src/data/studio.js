@@ -10,6 +10,10 @@ export const studio = {
   email: "silvia.skinstudio@gmail.com",
   instagram: "https://instagram.com/silviaskinstudio",
   mapsUrl: "https://maps.app.goo.gl/hJs143jucsFxBwwg6",
+  // Online booking on Fresha; public/assets/booking-qr.svg encodes the same page
+  // (with Fresha's qrcode=true flag, as on the printed menu).
+  bookingUrl:
+    "https://www.fresha.com/book-now/silvia-skin-studio-lw1l04be/all-offer?share=true&pId=2871278",
   address: {
     street: "Park Ln, Langham",
     locality: "Colchester",
@@ -22,9 +26,16 @@ export const studio = {
     return `${street}, ${locality} ${postalCode}, ${country}`;
   },
   hours: [
-    { days: "Monday – Thursday", opens: "09:30", closes: "19:00" },
-    { days: "Friday", opens: "09:00", closes: "17:00" },
+    { days: "Monday", opens: "09:30", closes: "19:00" },
+    { days: "Tuesday", closed: true },
+    { days: "Wednesday", opens: "09:30", closes: "19:00" },
+    { days: "Thursday", closed: true },
+    { days: "Friday", opens: "09:30", closes: "17:00" },
     { days: "Saturday", opens: "09:00", closes: "17:00" },
     { days: "Sunday", closed: true },
   ],
 };
+
+// Every "Book" button opens Fresha in a new tab; phone links stay for calls.
+export const openBooking = () =>
+  window.open(studio.bookingUrl, "_blank", "noopener");

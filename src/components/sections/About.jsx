@@ -48,7 +48,7 @@ const About = () => {
                 src="/assets/silvia-about.webp"
                 width={974}
                 height={1421}
-                alt="Silvia, Level 5 qualified aesthetician and massage therapist at Silvia Skin Studio, Colchester"
+                alt="Silvia, Level 7 Aesthetic Practitioner, skin specialist and massage therapist at Silvia Skin Studio, Colchester"
                 loading="lazy"
                 className="object-cover w-full h-full"
               />
@@ -75,8 +75,18 @@ const About = () => {
                 : { duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
             }
           >
+            <img
+              src="/assets/logo-320.webp"
+              srcSet="/assets/logo-160.webp 160w, /assets/logo-320.webp 320w, /assets/logo-640.webp 640w"
+              sizes="144px"
+              width={144}
+              height={144}
+              alt="Silvia Skin Studio logo"
+              loading="lazy"
+              className="w-28 h-28 md:w-36 md:h-36 mb-8"
+            />
             <SectionTitle
-              title="Welcome to Your Beauty & Wellness Experience"
+              title="Welcome to Silvia Skin Studio"
               subtitle="About Silvia"
               centered={false}
             />
@@ -85,23 +95,27 @@ const About = () => {
               <p>
                 As a fully qualified{" "}
                 <span className="text-charcoal font-normal">
-                  Level 5 Aesthetician and Massage Therapist
+                  Level 7 Aesthetic Practitioner, Skin Specialist and Massage
+                  Therapist
                 </span>
-                , I offer professional, customised beauty and wellness
-                treatments designed to enhance your natural beauty.
+                , I provide professional, personalised treatments designed
+                around the individual needs of every client.
               </p>
               <p>
-                Having spent over a decade honing my craft in premier salons, I
-                founded Silvia Skin Studio to bring a higher level of
-                personalised care to my clients. Specialising in advanced
-                facials, therapeutic massages, manicures, and pedicures, each
-                treatment is tailored to meet your individual needs and promote
-                overall wellbeing.
+                With a passion for{" "}
+                <span className="text-charcoal font-normal">
+                  skin health, advanced aesthetics and therapeutic massage
+                </span>
+                , my approach combines professional expertise with a warm,
+                personal experience. From advanced facials and skin treatments
+                to restorative massage and beauty services, every treatment is
+                carefully tailored to help you look and feel your best.
               </p>
               <p>
-                Experience the convenience and excellence of a personalised spa
-                service in the comfort of our environment, designed to enhance
-                your natural beauty and support your relaxation.
+                At Silvia Skin Studio, my aim is to create a welcoming
+                environment where professional results meet relaxation — giving
+                you the time and space to relax, restore and invest in
+                yourself.
               </p>
             </div>
 

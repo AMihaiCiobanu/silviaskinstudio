@@ -4,6 +4,7 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import { m, useReducedMotion } from "framer-motion";
 import Button from "../ui/Button";
 import SerumDrops from "../ui/SerumDrops";
+import { openBooking } from "../../data/studio";
 // HALLOWEEN:start
 import { isHalloween } from "../seasonal/season";
 const Halloween = lazy(() => import("../seasonal/Halloween"));
@@ -125,7 +126,7 @@ const Hero = () => {
           {...reveal(0.6)}
           className="mt-8 eyebrow text-white/55 text-[10px]"
         >
-          Level 5 Qualified Aesthetician
+          Level 7 Aesthetic Practitioner
         </m.p>
 
         <m.div
@@ -135,7 +136,7 @@ const Hero = () => {
           <Button
             variant="primary"
             size="lg"
-            onClick={() => (window.location.href = "tel:+447427619245")}
+            onClick={openBooking}
             data-analytics="hero-book"
             className="w-full sm:w-auto min-w-[220px]"
           >

@@ -5,6 +5,7 @@ import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import SectionTitle from "../ui/SectionTitle";
 import ServiceCard from "../ui/ServiceCard";
 import { servicesData } from "../../data/services";
+import { openBooking } from "../../data/studio";
 import * as analytics from "../../utils/analytics";
 
 const categories = [
@@ -123,7 +124,7 @@ const Services = () => {
                   key={index}
                   {...service}
                   fullService={service}
-                  onBook={() => (window.location.href = "tel:+447427619245")}
+                  onBook={openBooking}
                 />
               ))}
             </m.div>

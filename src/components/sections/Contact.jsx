@@ -27,6 +27,33 @@ const details = [
   },
 ];
 
+const policies = [
+  {
+    title: "Reservations",
+    text: "My services are available by appointment. I recommend booking in advance to secure your preferred time and date.",
+  },
+  {
+    title: "First-Time Clients",
+    text: "Please arrive 15 minutes early to allow time for paperwork and to ensure you begin your treatment in a relaxed state.",
+  },
+  {
+    title: "Cancellations",
+    text: "Your appointment time is reserved especially for you. A minimum of 24 hours' notice is required for cancellations or rescheduling. Cancellations made within 24 hours may be subject to a 50% treatment fee.",
+  },
+  {
+    title: "Gift Certificates",
+    text: "Give the gift of beauty and relaxation. Gift certificates are available for any treatment, service, or product, and can be tailored to your recipient's needs.",
+  },
+  {
+    title: "Payment",
+    text: "I accept all major credit cards.",
+  },
+  {
+    title: "General",
+    text: "We reserve the right to refuse service to anyone. Prices and services are subject to change without notice.",
+  },
+];
+
 const Contact = () => {
   return (
     <section id="contact" className="scroll-mt-16 py-28 md:py-40 bg-butter">
@@ -91,6 +118,33 @@ const Contact = () => {
               </div>
             </div>
 
+            <div className="rounded-soft border border-gold/20 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-8">
+              <img
+                src="/assets/booking-qr.svg"
+                width={144}
+                height={144}
+                alt="QR code linking to Silvia Skin Studio online booking on Fresha"
+                loading="lazy"
+                className="w-36 h-36 rounded-soft flex-shrink-0"
+              />
+              <div className="text-center sm:text-left">
+                <h3 className="eyebrow text-charcoal/65 mb-4">
+                  Book Your Appointment
+                </h3>
+                <p className="font-serif text-lg text-charcoal/90 leading-snug mb-5">
+                  Scan to book or discover more.
+                </p>
+                <a
+                  href={studio.bookingUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-soft border border-charcoal/25 text-charcoal eyebrow text-[11px] fill-sweep hover:border-gold transition-colors duration-500 ease-luxe"
+                >
+                  Book Online
+                </a>
+              </div>
+            </div>
+
             <div className="bg-charcoal rounded-soft p-8 md:p-10">
               <h3 className="eyebrow text-gold mb-8">Opening Hours</h3>
               <dl className="space-y-4 text-sm">
@@ -125,6 +179,25 @@ const Contact = () => {
               className="absolute inset-0 grayscale-[0.4] contrast-[1.05]"
             ></iframe>
           </div>
+        </div>
+
+        <div className="mt-16 md:mt-20">
+          <h3 className="eyebrow text-charcoal/65 mb-8 flex items-center">
+            <span className="w-8 h-px bg-gold mr-4" aria-hidden="true" />
+            Studio Policies
+          </h3>
+          <dl className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
+            {policies.map(({ title, text }) => (
+              <div key={title}>
+                <dt className="font-serif text-lg text-charcoal/90 mb-2">
+                  {title}
+                </dt>
+                <dd className="text-sm text-charcoal/70 font-light leading-relaxed">
+                  {text}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
