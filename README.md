@@ -101,7 +101,7 @@ src/
 public/
 ├── certificates/       # Certificate images (14 files)
 ├── certificates.pdf
-├── favicon.svg
+├── favicon.ico
 ├── robots.txt
 ├── sitemap.xml
 └── _redirects         # SPA routing for Cloudflare
