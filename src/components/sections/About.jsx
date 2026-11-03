@@ -75,16 +75,6 @@ const About = () => {
                 : { duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }
             }
           >
-            <img
-              src="/assets/logo-320.webp"
-              srcSet="/assets/logo-160.webp 160w, /assets/logo-320.webp 320w, /assets/logo-640.webp 640w"
-              sizes="144px"
-              width={144}
-              height={144}
-              alt="Silvia Skin Studio logo"
-              loading="lazy"
-              className="w-28 h-28 md:w-36 md:h-36 mb-8"
-            />
             <SectionTitle
               title="Welcome to Silvia Skin Studio"
               subtitle="About Silvia"

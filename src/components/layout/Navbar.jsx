@@ -80,21 +80,23 @@ const Navbar = () => {
       <div className={isMobileMenuOpen ? "max-md:hidden" : ""}>
         <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex flex-col z-50 flex-shrink-0 leading-none">
-          <span
-            className={`font-serif font-light text-2xl md:text-[1.75rem] tracking-[0.12em] transition-colors duration-1000 ease-luxe ${
-              showSolidHeader ? "text-charcoal" : "text-white"
+        <a
+          href="/"
+          aria-label="Silvia Skin Studio – home"
+          className="z-50 flex-shrink-0 -my-2"
+        >
+          <img
+            src="/assets/logo-160.webp"
+            srcSet="/assets/logo-160.webp 160w, /assets/logo-320.webp 320w"
+            sizes="64px"
+            width={64}
+            height={64}
+            alt="Silvia Skin Studio"
+            fetchPriority="high"
+            className={`w-14 h-14 md:w-16 md:h-16 transition-[filter] duration-1000 ease-luxe ${
+              showSolidHeader ? "" : "brightness-0 invert"
             }`}
-          >
-            SILVIA
-          </span>
-          <span
-            className={`eyebrow text-[9px] mt-1.5 transition-colors duration-1000 ease-luxe ${
-              showSolidHeader ? "text-gold-ink" : "text-white/55"
-            }`}
-          >
-            Skin Studio
-          </span>
+          />
         </a>
 
         {/* Desktop Navigation */}
