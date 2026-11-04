@@ -2,6 +2,9 @@
 
 @import "tailwindcss";
 
+/* Phones held sideways: little height, so fixed bars must stay slim */
+@custom-variant short (@media (orientation: landscape) and (max-height: 500px));
+
 @theme {
   --color-butter: #f8f6f1;
   --color-butter-light: #fdfcfa;

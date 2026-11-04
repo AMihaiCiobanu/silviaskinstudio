@@ -78,7 +78,7 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-1000 ease-luxe ${headerBgClass}`}
     >
       <div className={isMobileMenuOpen ? "max-md:hidden" : ""}>
-        <div className="container mx-auto px-6 md:px-8 py-5 flex items-center justify-between">
+        <div className="container mx-auto px-6 md:px-8 py-5 short:py-2.5 flex items-center justify-between">
         {/* Logo */}
         <a
           href="/"
@@ -93,7 +93,7 @@ const Navbar = () => {
             height={64}
             alt="Silvia Skin Studio"
             fetchPriority="high"
-            className={`w-14 h-14 md:w-16 md:h-16 transition-[filter] duration-1000 ease-luxe ${
+            className={`w-14 h-14 md:w-16 md:h-16 short:w-11 short:h-11 transition-[filter] duration-1000 ease-luxe ${
               showSolidHeader ? "" : "brightness-0 invert"
             }`}
           />

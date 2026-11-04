@@ -50,10 +50,10 @@ const CookieBanner = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 bg-white border-t border-gold/20 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+          className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 short:py-2 bg-white border-t border-gold/20 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
         >
-          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-charcoal/80 text-center md:text-left">
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 short:gap-3">
+            <p className="text-sm short:text-xs short:leading-snug text-charcoal/80 text-center md:text-left">
               We use essential cookies and analytics tools (Google Analytics) to
               improve your experience. By accepting, you agree to our use of
               cookies for site performance and analytics. Review our{" "}
